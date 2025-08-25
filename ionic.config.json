@@ -1,0 +1,7 @@
+{
+  "name": "order-of-thekla",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
