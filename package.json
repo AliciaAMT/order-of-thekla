@@ -1,18 +1,28 @@
 {
   "name": "order-of-thekla",
   "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "https://ionicframework.com/",
+  "author": "Accessible Web Media",
+  "homepage": "https://accessiblewebmedia.com/",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "start:staging": "ionic serve --configuration=staging",
+    "build:staging": "ng build -c staging",
+    "build:prod:staging": "ng build -c productionStaging",
+    "deploy:firebase:prod": "firebase deploy --only hosting:prod",
+    "deploy:firebase:staging": "firebase deploy --only hosting:staging",
+    "vd": "npm version patch && npm run build && npm run deploy:firebase:prod",
+    "fvd": "npm version minor && npm run build && npm run deploy:firebase:prod",
+    "mvd": "npm version major && npm run build && npm run deploy:firebase:prod",
+    "td": "npm run build:staging && npm run deploy:firebase:staging"
   },
   "private": true,
   "dependencies": {
+    "@accessiblewebmedia/ionic-angular-init": "^1.0.9",
     "@angular/animations": "^20.0.0",
     "@angular/common": "^20.0.0",
     "@angular/compiler": "^20.0.0",
@@ -60,5 +70,8 @@
     "karma-jasmine-html-reporter": "~2.1.0",
     "typescript": "~5.8.0"
   },
-  "description": "An Ionic project"
+  "description": "An Ionic project",
+  "engines": {
+    "node": ">=18"
+  }
 }

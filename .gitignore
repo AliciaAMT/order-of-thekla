@@ -74,3 +74,17 @@ Thumbs.db
 .env
 .env.local
 .env.production
+
+dist/
+www/
+.env.*
+src/environments/environment.ts
+src/environments/environment.prod.ts
+src/environments/environment.staging.ts
+src/environments/environment.prod.staging.ts
+firebase-debug.log
+.firebase/
+functions/.runtimeconfig.json
+# common Angular/Ionic artifacts
+.husky/
+.vscode/
