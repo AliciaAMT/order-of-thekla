@@ -18,7 +18,8 @@
     "vd": "npm version patch && npm run build && npm run deploy:firebase:prod",
     "fvd": "npm version minor && npm run build && npm run deploy:firebase:prod",
     "mvd": "npm version major && npm run build && npm run deploy:firebase:prod",
-    "td": "npm run build:staging && npm run deploy:firebase:staging"
+    "td": "npm run build:staging && npm run deploy:firebase:staging",
+    "generate-icons": "node scripts/generate-icons.js"
   },
   "private": true,
   "dependencies": {
@@ -68,6 +69,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "sharp": "^0.33.5",
     "typescript": "~5.8.0"
   },
   "description": "An Ionic project",

@@ -129,45 +129,29 @@ ion-menu {
 
     @media (min-width: 768px) {
       margin-bottom: 0;
-      flex: 0 0 300px;
+      flex: 0 0 400px;
     }
 
       .image-placeholder {
-        width: 200px;
-        height: 200px;
+        width: 100%;
+        max-width: 300px;
         margin: 0 auto;
         position: relative;
-        border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        backdrop-filter: blur(10px);
-        // Use theme-aware semi-transparent background via pseudo-element
-        &::before {
-          content: '';
-          position: absolute;
-          inset: 0;
-          background: var(--ion-color-primary-contrast);
-          opacity: 0.2;
-          border-radius: 50%;
-          z-index: 0;
-        }
 
         @media (min-width: 768px) {
-          width: 250px;
-          height: 250px;
+          max-width: 400px;
         }
 
         .hero-icon {
-          font-size: 6rem;
-          color: var(--ion-color-primary-contrast);
-          opacity: 0.9;
+          width: 100%;
+          height: auto;
+          object-fit: contain;
           position: relative;
           z-index: 1;
-
-          @media (min-width: 768px) {
-            font-size: 8rem;
-          }
+          display: block;
         }
       }
   }
@@ -287,13 +271,13 @@ ion-menu {
     text-align: center;
 
     @media (min-width: 768px) {
-      flex: 0 0 300px;
+      flex: 0 0 500px;
       margin-bottom: 0;
     }
 
     .image-placeholder {
-      width: 200px;
-      height: 200px;
+      width: 100%;
+      max-width: 400px;
       margin: 0 auto;
       background: var(--ion-color-step-50);
       border-radius: 12px;
@@ -303,24 +287,30 @@ ion-menu {
       border: 2px solid var(--ion-border-color);
 
       @media (min-width: 768px) {
-        width: 250px;
-        height: 250px;
+        max-width: 500px;
       }
 
       .section-icon {
-        font-size: 5rem;
-        color: var(--ion-color-primary);
-        opacity: 0.7;
-
-        @media (min-width: 768px) {
-          font-size: 6rem;
-        }
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+        display: block;
+        border-radius: 12px;
       }
     }
   }
 
   .section-content {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+
+    .content-block {
+      &:not(:last-child) {
+        margin-bottom: 0;
+      }
+    }
   }
 
   .section-title {
@@ -699,29 +689,29 @@ ion-menu {
 
     ion-item {
       // Always use white background for email field in both light and dark modes
-      --background: var(--ion-color-primary-contrast);
+      --background: #ffffff;
       --border-radius: 8px;
       margin-bottom: 1rem;
       --padding-start: 1rem;
       --padding-end: 1rem;
       --inner-padding-end: 0;
-      --border-color: var(--ion-border-color);
+      --border-color: #e0e0e0;
       --highlight-color-focused: var(--ion-color-primary);
       --border-width: 1px;
       --border-style: solid;
     }
 
     ion-label {
-      // Use dark step color for text to ensure contrast on light background
-      color: var(--ion-color-step-900);
+      // Use dark color for text to ensure contrast on white background
+      color: #1a1a1a;
       font-weight: 500;
     }
 
     ion-input {
-      // Use dark step color for text
-      --color: var(--ion-color-step-900);
-      // Placeholder uses medium step color for sufficient contrast
-      --placeholder-color: var(--ion-color-step-500);
+      // Use dark color for text
+      --color: #1a1a1a;
+      // Placeholder uses medium gray for sufficient contrast
+      --placeholder-color: #666666;
       --placeholder-opacity: 1;
     }
 
