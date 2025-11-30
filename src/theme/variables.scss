@@ -1,2 +1,43 @@
 // For information on how to create your own theme, please see:
 // http://ionicframework.com/docs/theming/
+
+// Custom color palette for Order of Thekla
+// Dark Royal Purple theme
+:root {
+  /** primary - Dark Royal Purple **/
+  --ion-color-primary: #4A148C;
+  --ion-color-primary-rgb: 74, 20, 140;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #41127b;
+  --ion-color-primary-tint: #5c2c98;
+
+  /** secondary **/
+  --ion-color-secondary: #C9A9A9;
+  --ion-color-secondary-rgb: 201, 169, 169;
+  --ion-color-secondary-contrast: #000000;
+  --ion-color-secondary-contrast-rgb: 0, 0, 0;
+  --ion-color-secondary-shade: #b19595;
+  --ion-color-secondary-tint: #ceb2b2;
+
+  /** tertiary **/
+  --ion-color-tertiary: #F4E4C1;
+  --ion-color-tertiary-rgb: 244, 228, 193;
+  --ion-color-tertiary-contrast: #000000;
+  --ion-color-tertiary-contrast-rgb: 0, 0, 0;
+  --ion-color-tertiary-shade: #d7c9aa;
+  --ion-color-tertiary-tint: #f5e7c7;
+}
+
+// Dark mode color adjustments
+@media (prefers-color-scheme: dark) {
+  :root {
+    /** primary - Slightly lighter royal purple for dark mode **/
+    --ion-color-primary: #6A1B9A;
+    --ion-color-primary-rgb: 106, 27, 154;
+    --ion-color-primary-contrast: #ffffff;
+    --ion-color-primary-contrast-rgb: 255, 255, 255;
+    --ion-color-primary-shade: #5d1888;
+    --ion-color-primary-tint: #7932a4;
+  }
+}

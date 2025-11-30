@@ -1,20 +1,321 @@
-<ion-header [translucent]="true">
+<!-- Sticky Navigation -->
+<ion-header class="main-header">
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-title class="logo-title">Order of Thekla</ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button class="mobile-menu-btn" menu="main-menu"></ion-menu-button>
+    </ion-buttons>
+    <nav class="desktop-nav">
+      <a routerLink="/home" class="nav-link">Home</a>
+      <a routerLink="/about" class="nav-link">About</a>
+      <a routerLink="/who-was-thekla" class="nav-link">Who Was Thekla?</a>
+      <a routerLink="/join-us" class="nav-link">Join Us</a>
+      <a routerLink="/rule-of-life" class="nav-link">Rule of Life</a>
+      <a routerLink="/devotions" class="nav-link">Devotions</a>
+      <a routerLink="/ministry-support" class="nav-link">Ministry & Support</a>
+      <a routerLink="/donate" class="nav-link">Donate</a>
+      <a routerLink="/contact" class="nav-link">Contact</a>
+    </nav>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+<!-- Mobile Menu -->
+<ion-menu side="end" menuId="main-menu" contentId="main-content">
+  <ion-header>
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title>Menu</ion-title>
+      <ion-buttons slot="end">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
     </ion-toolbar>
   </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-item button routerLink="/home" routerDirection="root">
+        <ion-label>Home</ion-label>
+      </ion-item>
+      <ion-item button routerLink="/about" routerDirection="root">
+        <ion-label>About</ion-label>
+      </ion-item>
+      <ion-item button routerLink="/who-was-thekla" routerDirection="root">
+        <ion-label>Who Was Thekla?</ion-label>
+      </ion-item>
+      <ion-item button routerLink="/join-us" routerDirection="root">
+        <ion-label>Join Us</ion-label>
+      </ion-item>
+      <ion-item button routerLink="/rule-of-life" routerDirection="root">
+        <ion-label>Rule of Life</ion-label>
+      </ion-item>
+      <ion-item button routerLink="/devotions" routerDirection="root">
+        <ion-label>Devotions</ion-label>
+      </ion-item>
+      <ion-item button routerLink="/ministry-support" routerDirection="root">
+        <ion-label>Ministry & Support</ion-label>
+      </ion-item>
+      <ion-item button routerLink="/donate" routerDirection="root">
+        <ion-label>Donate</ion-label>
+      </ion-item>
+      <ion-item button routerLink="/contact" routerDirection="root">
+        <ion-label>Contact</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+<ion-content id="main-content" [fullscreen]="true">
+  
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-image">
+      <div class="image-placeholder">
+        <ion-icon name="heart" class="hero-icon"></ion-icon>
+      </div>
+    </div>
+    <div class="hero-content">
+      <h1 class="hero-headline">Order of Thekla — A Monastery Without Walls</h1>
+      <p class="hero-subhead">A community of Christian women devoted to Christ through prayer, service, healing, and Scripture.</p>
+      <div class="hero-buttons">
+        <ion-button expand="block" size="large" class="hero-btn primary" routerLink="/who-was-thekla">
+          Learn About Thekla
+        </ion-button>
+        <ion-button expand="block" size="large" class="hero-btn secondary" routerLink="/join-us">
+          Join the Community
+        </ion-button>
+      </div>
+      <p class="hero-scripture">"Let your 'Yes' be yes." – Matthew 5:37</p>
+    </div>
+  </section>
+
+  <!-- Section 1: Who We Are -->
+  <section class="content-section section-who-we-are">
+    <div class="section-container">
+      <div class="section-image">
+        <div class="image-placeholder">
+          <ion-icon name="people" class="section-icon"></ion-icon>
+        </div>
+      </div>
+      <div class="section-content">
+        <h2 class="section-title">What Is the Order of Thekla?</h2>
+        <p class="section-text">
+          The Order of Thekla is an ecumenical monastic community rooted in the courage 
+          and witness of Saint Thekla. Our nuns make commitments (not vows), choosing 
+          a life shaped by prayer, holiness, simplicity, and service. We welcome all 
+          women into our spiritual family—nuns, novices, companions, and seekers.
+        </p>
+        <div class="section-links">
+          <a routerLink="/about" class="text-link">→ About the Order</a>
+          <a routerLink="/about#ecumenical" class="text-link">→ What "Ecumenical" Means</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: Meet Thekla -->
+  <section class="content-section section-thekla">
+    <div class="section-container reverse">
+      <div class="section-image">
+        <div class="image-placeholder">
+          <ion-icon name="star" class="section-icon"></ion-icon>
+        </div>
+      </div>
+      <div class="section-content">
+        <h2 class="section-title">Discover Thekla's Story</h2>
+        <p class="section-text">
+          Thekla, the disciple of Paul, is one of the earliest Christian heroines—
+          a preacher, healer, and protector of women. Her story has changed lives 
+          for nearly two thousand years.
+        </p>
+        <div class="section-buttons">
+          <ion-button expand="block" class="section-btn" routerLink="/who-was-thekla">
+            Read Her Story
+          </ion-button>
+          <ion-button expand="block" class="section-btn outline" routerLink="/who-was-thekla#video">
+            Watch the Video
+          </ion-button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Today's Devotions -->
+  <section class="content-section section-devotions">
+    <div class="section-container">
+      <h2 class="section-title centered">Today's Devotions</h2>
+      <div class="devotions-list">
+        <a href="#" class="devotion-item">
+          <ion-icon name="book" class="devotion-icon"></ion-icon>
+          <span>Today's Scripture: <strong>[PLACEHOLDER LINK]</strong></span>
+        </a>
+        <a href="#" class="devotion-item">
+          <ion-icon name="heart" class="devotion-icon"></ion-icon>
+          <span>Thekla Meditation: <strong>[PLACEHOLDER LINK]</strong></span>
+        </a>
+        <a href="#" class="devotion-item">
+          <ion-icon name="flame" class="devotion-icon"></ion-icon>
+          <span>Daily Prayer: <strong>[PLACEHOLDER LINK]</strong></span>
+        </a>
+        <a href="#" class="devotion-item">
+          <ion-icon name="bulb" class="devotion-icon"></ion-icon>
+          <span>Reflection or Practice: <strong>[PLACEHOLDER]</strong></span>
+        </a>
+      </div>
+      <div class="section-button-center">
+        <ion-button expand="block" size="large" class="section-btn" routerLink="/devotions">
+          Visit Devotions Page
+        </ion-button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Paths of Participation -->
+  <section class="content-section section-paths">
+    <div class="section-container">
+      <h2 class="section-title centered">Ways to Walk With Us</h2>
+      <div class="paths-grid">
+        <div class="path-card">
+          <div class="path-icon">
+            <ion-icon name="people"></ion-icon>
+          </div>
+          <h3 class="path-title">NUNS<br>(Consecrated Sisters)</h3>
+          <p class="path-text">For unmarried, widowed, or divorced women with grown children. Live by the Rule through commitments of intention.</p>
+          <a routerLink="/join-us#nuns" class="path-link">Learn More</a>
+        </div>
+        <div class="path-card">
+          <div class="path-icon">
+            <ion-icon name="sparkles"></ion-icon>
+          </div>
+          <h3 class="path-title">NOVICES</h3>
+          <p class="path-text">For women discerning consecrated life who still have children or responsibilities.</p>
+          <a routerLink="/join-us#novices" class="path-link">Learn More</a>
+        </div>
+        <div class="path-card">
+          <div class="path-icon">
+            <ion-icon name="people-circle"></ion-icon>
+          </div>
+          <h3 class="path-title">COMPANIONS<br>& FRIENDS</h3>
+          <p class="path-text">For married women and seekers who want spiritual community, study, and support.</p>
+          <a routerLink="/join-us#companions" class="path-link">Learn More</a>
+        </div>
+        <div class="path-card">
+          <div class="path-icon">
+            <ion-icon name="person"></ion-icon>
+          </div>
+          <h3 class="path-title">INDEPENDENT<br>SISTERS</h3>
+          <p class="path-text">For women already living a private monastic life without denominational ties.</p>
+          <a routerLink="/join-us#independent" class="path-link">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: Ministry & Support -->
+  <section class="content-section section-ministry">
+    <div class="section-container">
+      <div class="section-image">
+        <div class="image-placeholder">
+          <ion-icon name="hand-left" class="section-icon"></ion-icon>
+        </div>
+      </div>
+      <div class="section-content">
+        <h2 class="section-title">Here for the Brokenhearted</h2>
+        <p class="section-text">
+          The Order of Thekla ministers especially to women healing from trauma, 
+          disability, domestic violence, addiction, and spiritual wounds. If you need 
+          prayer, guidance, or someone to talk to, you are not alone.
+        </p>
+        <div class="section-buttons">
+          <ion-button expand="block" class="section-btn" routerLink="/ministry-support#prayer">
+            Request Prayer
+          </ion-button>
+          <ion-button expand="block" class="section-btn outline" routerLink="/ministry-support#speak">
+            Speak With a Sister
+          </ion-button>
+          <ion-button expand="block" class="section-btn outline" routerLink="/ministry-support#help">
+            Get Help
+          </ion-button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6: Invitation to Join -->
+  <section class="content-section section-invitation">
+    <div class="section-container">
+      <h2 class="section-title centered">Is God Calling You?</h2>
+      <p class="section-text centered large">
+        If your heart has ever whispered, "There must be a place for someone like me," 
+        you may be hearing the same call Thekla heard long ago.
+      </p>
+      <div class="section-buttons centered-buttons">
+        <ion-button expand="block" size="large" class="section-btn" routerLink="/join-us">
+          Begin Discernment
+        </ion-button>
+        <ion-button expand="block" size="large" class="section-btn outline" routerLink="/rule-of-life">
+          Read the Rule of Life
+        </ion-button>
+        <ion-button expand="block" size="large" class="section-btn outline" routerLink="/join-us#gathering">
+          Attend a Gathering (Online)
+        </ion-button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 7: Support the Ministry -->
+  <section class="content-section section-support">
+    <div class="section-container reverse">
+      <div class="section-image">
+        <div class="image-placeholder">
+          <ion-icon name="gift" class="section-icon"></ion-icon>
+        </div>
+      </div>
+      <div class="section-content">
+        <h2 class="section-title">Support the Work of Thekla</h2>
+        <p class="section-text">
+          Your generosity helps us provide spiritual support, outreach, healing 
+          resources, and discipleship for women around the world.
+        </p>
+        <div class="section-buttons">
+          <ion-button expand="block" size="large" class="section-btn" routerLink="/donate">
+            Donate
+          </ion-button>
+          <ion-button expand="block" size="large" class="section-btn outline" routerLink="/donate#monthly">
+            Become a Monthly Supporter
+          </ion-button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 8: Newsletter Signup -->
+  <section class="content-section section-newsletter">
+    <div class="section-container">
+      <h2 class="section-title centered">Stay Connected</h2>
+      <p class="section-text centered">Receive reflections, news from the community, and devotionals.</p>
+      <form class="newsletter-form" (ngSubmit)="onNewsletterSubmit()">
+        <ion-item>
+          <ion-label position="stacked">Email Address</ion-label>
+          <ion-input type="email" placeholder="your@email.com" [(ngModel)]="newsletterEmail" name="email" required></ion-input>
+        </ion-item>
+        <ion-button expand="block" size="large" type="submit" class="section-btn">
+          Subscribe
+        </ion-button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="footer-container">
+      <p class="footer-title">Order of Thekla — A Monastery Without Walls</p>
+      <p class="footer-copyright">© 2025 All Rights Reserved</p>
+      <nav class="footer-nav">
+        <a routerLink="/contact" class="footer-link">Contact</a>
+        <a routerLink="/privacy" class="footer-link">Privacy</a>
+        <a routerLink="/statement-of-faith" class="footer-link">Statement of Faith</a>
+        <a routerLink="/rule-of-life" class="footer-link">Rule of Life</a>
+        <a routerLink="/accessibility" class="footer-link">Accessibility</a>
+      </nav>
+    </div>
+  </footer>
+
 </ion-content>

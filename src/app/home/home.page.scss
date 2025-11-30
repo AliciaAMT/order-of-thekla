@@ -1,27 +1,798 @@
-#container {
+// Using Ionic theme variables for automatic dark/light mode support
+
+// Ensure content uses theme background
+ion-content {
+  --background: var(--ion-background-color);
+  --color: var(--ion-text-color);
+}
+
+// Sticky Navigation
+.main-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  ion-toolbar {
+    --background: var(--ion-background-color);
+    --color: var(--ion-text-color);
+    padding: 0.5rem 1rem;
+  }
+
+  .logo-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--ion-color-primary);
+    text-align: left;
+  }
+
+  .mobile-menu-btn {
+    display: block;
+    color: var(--ion-text-color);
+    
+    @media (min-width: 768px) {
+      display: none;
+    }
+  }
+
+  .desktop-nav {
+    display: none;
+    gap: 1.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+
+    @media (min-width: 768px) {
+      display: flex;
+    }
+
+    .nav-link {
+      color: var(--ion-text-color);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      padding: 0.5rem 0;
+      transition: color 0.3s ease;
+      position: relative;
+
+      &:hover {
+        color: var(--ion-color-primary);
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--ion-color-primary);
+        transition: width 0.3s ease;
+      }
+
+      &:hover::after {
+        width: 100%;
+      }
+    }
+  }
+}
+
+// Mobile Menu
+ion-menu {
+  --width: 280px;
+  
+  ion-content {
+    --background: var(--ion-background-color);
+  }
+
+  ion-list {
+    padding: 1rem 0;
+    background: var(--ion-background-color);
+  }
+
+  ion-item {
+    --padding-start: 1.5rem;
+    --min-height: 3.5rem;
+    --background: var(--ion-background-color);
+    --color: var(--ion-text-color);
+    
+    ion-label {
+      font-size: 1rem;
+      color: var(--ion-text-color);
+    }
+
+    &:hover {
+      --background: var(--ion-color-step-50);
+    }
+  }
+}
+
+// Hero Section
+.hero-section {
+  background: linear-gradient(135deg, var(--ion-color-primary) 0%, var(--ion-color-primary-shade) 100%);
+  color: var(--ion-color-primary-contrast);
+  padding: 4rem 1rem;
   text-align: center;
+  position: relative;
+  overflow: hidden;
 
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  @media (min-width: 768px) {
+    padding: 6rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    text-align: left;
+  }
+
+  .hero-image {
+    margin-bottom: 2rem;
+
+    @media (min-width: 768px) {
+      margin-bottom: 0;
+      flex: 0 0 300px;
+    }
+
+      .image-placeholder {
+        width: 200px;
+        height: 200px;
+        margin: 0 auto;
+        position: relative;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        backdrop-filter: blur(10px);
+        // Use theme-aware semi-transparent background via pseudo-element
+        &::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: var(--ion-color-primary-contrast);
+          opacity: 0.2;
+          border-radius: 50%;
+          z-index: 0;
+        }
+
+        @media (min-width: 768px) {
+          width: 250px;
+          height: 250px;
+        }
+
+        .hero-icon {
+          font-size: 6rem;
+          color: var(--ion-color-primary-contrast);
+          opacity: 0.9;
+          position: relative;
+          z-index: 1;
+
+          @media (min-width: 768px) {
+            font-size: 8rem;
+          }
+        }
+      }
+  }
+
+  .hero-content {
+    max-width: 600px;
+    margin: 0 auto;
+
+    @media (min-width: 768px) {
+      flex: 1;
+      margin: 0;
+    }
+  }
+
+  .hero-headline {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    color: var(--ion-color-primary-contrast);
+
+    @media (min-width: 768px) {
+      font-size: 2.5rem;
+    }
+
+    @media (min-width: 1024px) {
+      font-size: 3rem;
+    }
+  }
+
+  .hero-subhead {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    opacity: 0.95;
+    color: var(--ion-color-primary-contrast);
+
+    @media (min-width: 768px) {
+      font-size: 1.25rem;
+    }
+  }
+
+  .hero-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+      gap: 1rem;
+    }
+
+    .hero-btn {
+      --border-radius: 8px;
+      --padding-top: 1rem;
+      --padding-bottom: 1rem;
+      font-weight: 600;
+      text-transform: none;
+      font-size: 1rem;
+
+      &.primary {
+        --background: var(--ion-color-primary-contrast);
+        --color: var(--ion-color-primary);
+      }
+
+      &.secondary {
+        --background: transparent;
+        --color: var(--ion-color-primary-contrast);
+        --border-color: var(--ion-color-primary-contrast);
+        --border-width: 2px;
+        --border-style: solid;
+      }
+    }
+  }
+
+  .hero-scripture {
+    font-style: italic;
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-top: 1rem;
+    color: var(--ion-color-primary-contrast);
+  }
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+// Content Sections
+.content-section {
+  padding: 4rem 1rem;
+  background: var(--ion-background-color);
+
+  @media (min-width: 768px) {
+    padding: 5rem 2rem;
+  }
+
+  .section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+
+    &.reverse {
+      @media (min-width: 768px) {
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        gap: 3rem;
+      }
+    }
+
+    @media (min-width: 768px) {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+    }
+  }
+
+  .section-image {
+    margin-bottom: 2rem;
+    text-align: center;
+
+    @media (min-width: 768px) {
+      flex: 0 0 300px;
+      margin-bottom: 0;
+    }
+
+    .image-placeholder {
+      width: 200px;
+      height: 200px;
+      margin: 0 auto;
+      background: var(--ion-color-step-50);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--ion-border-color);
+
+      @media (min-width: 768px) {
+        width: 250px;
+        height: 250px;
+      }
+
+      .section-icon {
+        font-size: 5rem;
+        color: var(--ion-color-primary);
+        opacity: 0.7;
+
+        @media (min-width: 768px) {
+          font-size: 6rem;
+        }
+      }
+    }
+  }
+
+  .section-content {
+    flex: 1;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--ion-text-color);
+    margin-bottom: 1.5rem;
+    line-height: 1.3;
+
+    @media (min-width: 768px) {
+      font-size: 2.5rem;
+    }
+
+    &.centered {
+      text-align: center;
+    }
+  }
+
+  .section-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--ion-text-color);
+    margin-bottom: 1.5rem;
+
+    @media (min-width: 768px) {
+      font-size: 1.15rem;
+    }
+
+    &.centered {
+      text-align: center;
+    }
+
+    &.large {
+      font-size: 1.2rem;
+
+      @media (min-width: 768px) {
+        font-size: 1.3rem;
+      }
+    }
+  }
+
+  .section-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+      gap: 2rem;
+    }
+
+    .text-link {
+      color: var(--ion-color-primary);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: var(--ion-color-primary-shade);
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .section-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+      gap: 1rem;
+    }
+
+    &.centered-buttons {
+      @media (min-width: 768px) {
+        justify-content: center;
+      }
+    }
+
+    .section-btn {
+      --border-radius: 8px;
+      --padding-top: 1rem;
+      --padding-bottom: 1rem;
+      font-weight: 600;
+      text-transform: none;
+      font-size: 1rem;
+
+      &::part(native) {
+        --background: var(--ion-color-primary);
+        --color: var(--ion-color-primary-contrast);
+      }
+
+      &.outline {
+        &::part(native) {
+          --background: transparent;
+          --color: var(--ion-color-primary);
+          --border-color: var(--ion-color-primary);
+          --border-width: 2px;
+          --border-style: solid;
+        }
+      }
+    }
+  }
+
+  .section-button-center {
+    margin-top: 2rem;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
+// Section-specific styles
+.section-who-we-are {
+  background: var(--ion-background-color);
 }
 
-#container a {
-  text-decoration: none;
+.section-thekla {
+  background: var(--ion-color-step-50);
+}
+
+.section-devotions {
+  background: var(--ion-background-color);
+
+  .devotions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 2rem 0;
+
+    @media (min-width: 768px) {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .devotion-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.5rem;
+      background: var(--ion-color-step-50);
+      border-radius: 8px;
+      text-decoration: none;
+      color: var(--ion-text-color);
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+
+      &:hover {
+        background: var(--ion-color-step-100);
+        border-color: var(--ion-color-primary);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      .devotion-icon {
+        font-size: 2rem;
+        color: var(--ion-color-primary);
+        flex-shrink: 0;
+      }
+
+      span {
+        font-size: 1rem;
+        line-height: 1.5;
+        color: var(--ion-text-color);
+
+        strong {
+          color: var(--ion-color-primary);
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}
+
+.section-paths {
+  background: var(--ion-color-step-50);
+
+  .paths-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-top: 3rem;
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: 1024px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .path-card {
+      background: var(--ion-background-color);
+      padding: 2rem;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      border: 1px solid var(--ion-border-color);
+
+      &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+      }
+
+      .path-icon {
+        font-size: 3rem;
+        color: var(--ion-color-primary);
+        margin-bottom: 1rem;
+      }
+
+      .path-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--ion-text-color);
+        margin-bottom: 1rem;
+        line-height: 1.4;
+      }
+
+      .path-text {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: var(--ion-text-color);
+        margin-bottom: 1.5rem;
+      }
+
+      .path-link {
+        color: var(--ion-color-primary);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1rem;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: var(--ion-color-primary-shade);
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+.section-ministry {
+  background: var(--ion-background-color);
+}
+
+.section-invitation {
+  background: var(--ion-color-step-100);
+  padding: 5rem 1rem;
+
+  @media (min-width: 768px) {
+    padding: 6rem 2rem;
+  }
+}
+
+.section-support {
+  background: var(--ion-background-color);
+}
+
+.section-newsletter {
+  background: var(--ion-color-primary);
+  color: var(--ion-color-primary-contrast);
+  padding: 4rem 1rem;
+
+  @media (min-width: 768px) {
+    padding: 5rem 2rem;
+  }
+
+  .section-title {
+    color: var(--ion-color-primary-contrast);
+  }
+
+  .section-text {
+    color: var(--ion-color-primary-contrast);
+    opacity: 0.95;
+  }
+
+  .newsletter-form {
+    max-width: 500px;
+    margin: 2rem auto 0;
+
+    ion-item {
+      // Use light step color for background to contrast with purple section in both modes
+      --background: var(--ion-color-step-50);
+      --border-radius: 8px;
+      margin-bottom: 1rem;
+      --padding-start: 1rem;
+      --padding-end: 1rem;
+      --inner-padding-end: 0;
+      --border-color: var(--ion-border-color);
+      --highlight-color-focused: var(--ion-color-primary);
+      --border-width: 1px;
+      --border-style: solid;
+    }
+
+    ion-label {
+      // Use dark step color for text to ensure contrast on light background
+      color: var(--ion-color-step-900);
+      font-weight: 500;
+    }
+
+    ion-input {
+      // Use dark step color for text
+      --color: var(--ion-color-step-900);
+      // Placeholder uses medium step color for sufficient contrast
+      --placeholder-color: var(--ion-color-step-500);
+      --placeholder-opacity: 1;
+    }
+
+    .section-btn {
+      margin-top: 1rem;
+      --border-radius: 8px;
+      --padding-top: 1rem;
+      --padding-bottom: 1rem;
+      font-weight: 600;
+      text-transform: none;
+      font-size: 1rem;
+      // Use dark step color to override inherited white text from parent
+      color: var(--ion-color-step-900);
+
+      // High contrast button using theme step colors
+      // Light step background ensures contrast against purple section in both modes
+      // Dark step text ensures proper contrast on light background in both modes
+      &::part(native) {
+        // Use light step color for background (light in both modes, contrasts with purple)
+        --background: var(--ion-color-step-50);
+        // Use dark step color for text (dark in both modes, contrasts with light background)
+        --color: var(--ion-color-step-900);
+        // Add border using step color for better definition
+        --border-width: 2px;
+        --border-style: solid;
+        --border-color: var(--ion-color-step-300);
+        // Enhanced shadow for better visibility
+        --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      }
+
+      // Hover state using slightly darker step
+      &:hover {
+        color: var(--ion-color-step-950);
+
+        &::part(native) {
+          --background: var(--ion-color-step-100);
+          --color: var(--ion-color-step-950);
+          --border-color: var(--ion-color-step-400);
+          --box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+        }
+      }
+
+      // Active/pressed state
+      &:active {
+        color: var(--ion-color-step-950);
+
+        &::part(native) {
+          --background: var(--ion-color-step-200);
+          --color: var(--ion-color-step-950);
+          --border-color: var(--ion-color-step-500);
+          --box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+        }
+      }
+
+      // Focus state for keyboard navigation
+      &:focus-visible {
+        color: var(--ion-color-step-900);
+
+        &::part(native) {
+          --background: var(--ion-color-step-50);
+          --color: var(--ion-color-step-900);
+          --border-color: var(--ion-color-step-400);
+          --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+          outline: 3px solid var(--ion-color-primary-contrast);
+          outline-offset: 3px;
+        }
+      }
+    }
+  }
+}
+
+// Footer
+.main-footer {
+  background: var(--ion-color-step-900);
+  color: var(--ion-color-step-50);
+  padding: 3rem 1rem 2rem;
+
+  @media (min-width: 768px) {
+    padding: 4rem 2rem 2rem;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .footer-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--ion-color-step-50);
+  }
+
+  .footer-copyright {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-bottom: 2rem;
+    color: var(--ion-color-step-200);
+  }
+
+  .footer-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--ion-color-step-700);
+
+    .footer-link {
+      color: var(--ion-color-step-200);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: var(--ion-color-step-50);
+      }
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 767px) {
+  .hero-section {
+    .hero-content {
+      .hero-headline {
+        font-size: 1.75rem;
+      }
+
+      .hero-subhead {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  .content-section {
+    .section-title {
+      font-size: 1.75rem;
+    }
+
+    .section-text {
+      font-size: 1rem;
+    }
+  }
+
+  .paths-grid {
+    .path-card {
+      padding: 1.5rem;
+    }
+  }
+}
+
+// Accessibility improvements
+a:focus,
+button:focus,
+ion-button:focus {
+  outline: 3px solid var(--ion-color-primary);
+  outline-offset: 2px;
+}
+
+// Smooth scrolling
+html {
+  scroll-behavior: smooth;
 }
