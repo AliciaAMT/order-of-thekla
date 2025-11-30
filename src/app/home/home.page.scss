@@ -410,19 +410,62 @@ ion-menu {
       font-weight: 600;
       text-transform: none;
       font-size: 1rem;
+      // Ensure button text color is set explicitly
+      color: var(--ion-color-primary-contrast);
 
       &::part(native) {
         --background: var(--ion-color-primary);
         --color: var(--ion-color-primary-contrast);
+        --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      // Hover state for primary buttons
+      &:hover {
+        color: var(--ion-color-primary-contrast);
+        &::part(native) {
+          --box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        }
+      }
+
+      // Active state
+      &:active {
+        color: var(--ion-color-primary-contrast);
+        &::part(native) {
+          --box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        }
       }
 
       &.outline {
+        // Use dark step color for outline button text to ensure visibility on light backgrounds
+        color: var(--ion-color-step-900);
+
         &::part(native) {
           --background: transparent;
-          --color: var(--ion-color-primary);
+          // Use dark step color for text (dark in both modes, visible on light backgrounds)
+          --color: var(--ion-color-step-900);
           --border-color: var(--ion-color-primary);
           --border-width: 2px;
           --border-style: solid;
+          // Add subtle shadow for better visibility on light backgrounds
+          --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        // Hover state for outline buttons - fill with primary color
+        &:hover {
+          color: var(--ion-color-primary-contrast);
+          &::part(native) {
+            --background: var(--ion-color-primary);
+            --color: var(--ion-color-primary-contrast);
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+          }
+        }
+
+        // Active state
+        &:active {
+          color: var(--ion-color-primary-contrast);
+          &::part(native) {
+            --box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+          }
         }
       }
     }
@@ -572,11 +615,59 @@ ion-menu {
 }
 
 .section-invitation {
-  background: var(--ion-color-step-100);
+  // Use a more visible background that works in both light and dark modes
+  background: var(--ion-color-step-50);
   padding: 5rem 1rem;
 
   @media (min-width: 768px) {
     padding: 6rem 2rem;
+  }
+
+  // Ensure text is visible on the light background
+  .section-title {
+    color: var(--ion-text-color);
+  }
+
+  .section-text {
+    color: var(--ion-text-color);
+  }
+
+  // Ensure buttons have proper contrast on light background
+  .section-btn {
+    // Set explicit text color to override any inherited colors
+    color: var(--ion-color-primary-contrast);
+
+    &::part(native) {
+      --background: var(--ion-color-primary);
+      --color: var(--ion-color-primary-contrast);
+      --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    &.outline {
+      // Use dark step color for outline button text to ensure visibility on light backgrounds
+      color: var(--ion-color-step-900);
+
+      &::part(native) {
+        --background: transparent;
+        // Use dark step color for text (dark in both modes, visible on light backgrounds)
+        --color: var(--ion-color-step-900);
+        --border-color: var(--ion-color-primary);
+        --border-width: 2px;
+        --border-style: solid;
+        // Add shadow for better visibility on light background
+        --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      // Hover state for outline buttons
+      &:hover {
+        color: var(--ion-color-primary-contrast);
+        &::part(native) {
+          --background: var(--ion-color-primary);
+          --color: var(--ion-color-primary-contrast);
+          --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+      }
+    }
   }
 }
 
@@ -607,8 +698,8 @@ ion-menu {
     margin: 2rem auto 0;
 
     ion-item {
-      // Use light step color for background to contrast with purple section in both modes
-      --background: var(--ion-color-step-50);
+      // Always use white background for email field in both light and dark modes
+      --background: var(--ion-color-primary-contrast);
       --border-radius: 8px;
       margin-bottom: 1rem;
       --padding-start: 1rem;
