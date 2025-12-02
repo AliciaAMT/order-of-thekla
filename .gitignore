@@ -69,22 +69,35 @@ testem.log
 .DS_Store
 Thumbs.db
 
-# Environment files
-/environments
+# Environment files - SECURITY: Never commit real credentials
+# Only example/template files should be committed
 .env
 .env.local
 .env.production
-
-dist/
-www/
 .env.*
+*.env
+*.env.local
+*.env.production
+
+# Real environment files (exclude from all branches)
 src/environments/environment.ts
 src/environments/environment.prod.ts
 src/environments/environment.staging.ts
 src/environments/environment.prod.staging.ts
+
+# Firebase
 firebase-debug.log
 .firebase/
+.firebaserc
+firebase.json
+firestore-debug.log
+ui-debug.log
 functions/.runtimeconfig.json
+functions/node_modules/
+
+# Build outputs
+dist/
+www/
 # common Angular/Ionic artifacts
 .husky/
 .vscode/

@@ -1,15 +1,26 @@
+/**
+ * ENVIRONMENT TEMPLATE FILE
+ * 
+ * This is a TEMPLATE only. Do not commit real credentials.
+ * 
+ * To get Firebase credentials, contact: admin@accessiblewebmedia.com
+ * 
+ * Copy this file to environment.ts and fill in your actual Firebase configuration.
+ * See src/environments/README.md for setup instructions.
+ */
+
 export const environment = {
   production: false,
   mode: 'dev',
-  appName: 'APP_NAME',
-  siteUrl: 'https://example.com',
+  appName: 'Order of Thekla',
+  siteUrl: 'OrderOfThekla.org',
   firebase: {
-    apiKey: 'XXX',
-    authDomain: 'XXX.firebaseapp.com',
-    projectId: 'XXX',
-    storageBucket: 'XXX.appspot.com',
-    messagingSenderId: 'XXX',
-    appId: 'XXX',
-    measurementId: 'G-XXXX'
+    apiKey: 'YOUR_FIREBASE_API_KEY',
+    authDomain: 'YOUR_PROJECT_ID.firebaseapp.com',
+    projectId: 'YOUR_PROJECT_ID',
+    storageBucket: 'YOUR_PROJECT_ID.appspot.com',
+    messagingSenderId: 'YOUR_MESSAGING_SENDER_ID',
+    appId: 'YOUR_APP_ID',
+    measurementId: 'G-YOUR_MEASUREMENT_ID'
   }
 } as const;

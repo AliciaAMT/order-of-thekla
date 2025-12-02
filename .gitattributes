@@ -1,0 +1,15 @@
+# Git Attributes for Security
+# This file helps ensure environment files are never accidentally committed
+
+# Mark environment files as sensitive
+src/environments/environment.ts linguist-generated=true
+src/environments/environment.prod.ts linguist-generated=true
+src/environments/environment.staging.ts linguist-generated=true
+src/environments/environment.prod.staging.ts linguist-generated=true
+
+# Prevent diffing of environment files (they contain secrets)
+src/environments/environment.ts -diff
+src/environments/environment.prod.ts -diff
+src/environments/environment.staging.ts -diff
+src/environments/environment.prod.staging.ts -diff
+

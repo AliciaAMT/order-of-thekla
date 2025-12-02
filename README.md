@@ -45,12 +45,23 @@ The image of Thekla is chosen as the name because like Thekla, many modern women
    npm install
    ```
 
-3. Start the development server:
+3. **Set up environment files** (Required for Firebase):
+   ```bash
+   # Copy example files to create your local environment files
+   cp src/environments/environment.example.ts src/environments/environment.ts
+   cp src/environments/environment.prod.example.ts src/environments/environment.prod.ts
+   ```
+   
+   **⚠️ IMPORTANT:** To get Firebase credentials, contact **admin@accessiblewebmedia.com**
+   
+   See `src/environments/README.md` for detailed setup instructions.
+
+4. Start the development server:
    ```bash
    npm start
    ```
 
-4. Open your browser and navigate to `http://localhost:4200`
+5. Open your browser and navigate to `http://localhost:4200`
 
 ### Available Scripts
 
@@ -74,6 +85,24 @@ order-of-thekla/
 └── README.md       # This file
 ```
 
+## Security
+
+### Environment Files
+
+**⚠️ CRITICAL:** Real Firebase credentials are never committed to the repository.
+
+- Real environment files (`environment.ts`, `environment.prod.ts`) are excluded from git
+- Only template/example files are committed
+- To obtain credentials, contact: **admin@accessiblewebmedia.com**
+- See `src/environments/README.md` for security guidelines
+
+### Verifying Security
+
+Run the security check script to ensure environment files are properly ignored:
+```bash
+./scripts/check-env-security.sh
+```
+
 ## Contributing
 
 ### Development Workflow
@@ -82,6 +111,7 @@ order-of-thekla/
 2. **Testing**: All code must pass tests before pull requests are accepted
 3. **Documentation**: Contributors must maintain good documentation
 4. **Code Quality**: Follow the established linting rules and coding standards
+5. **Security**: Never commit real environment files or credentials
 
 ### Before Contributing
 
