@@ -1,0 +1,228 @@
+<!-- Sticky Navigation -->
+<ion-header class="main-header">
+  <ion-toolbar>
+    <ion-title class="logo-title">Order of Thekla</ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button class="mobile-menu-btn" menu="main-menu"></ion-menu-button>
+    </ion-buttons>
+    <nav class="desktop-nav">
+      <a routerLink="/home" class="nav-link">Home</a>
+      <a routerLink="/about" class="nav-link">About</a>
+      <a routerLink="/who-was-thekla" class="nav-link">Who Was Thekla?</a>
+      <a routerLink="/join-us" class="nav-link">Join Us</a>
+      <a routerLink="/rule-of-life" class="nav-link">Rule of Life</a>
+      <a routerLink="/devotions" class="nav-link">Devotions</a>
+      <a routerLink="/ministry-support" class="nav-link">Ministry & Support</a>
+      <a routerLink="/donate" class="nav-link">Donate</a>
+      <a routerLink="/contact" class="nav-link">Contact</a>
+    </nav>
+  </ion-toolbar>
+</ion-header>
+
+<!-- Mobile Menu -->
+<ion-menu side="end" menuId="main-menu" contentId="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menu</ion-title>
+      <ion-buttons slot="end">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-item button routerLink="/home" routerDirection="root">
+        <ion-label>Home</ion-label>
+      </ion-item>
+      <ion-item button routerLink="/about" routerDirection="root">
+        <ion-label>About</ion-label>
+      </ion-item>
+      <ion-item button routerLink="/who-was-thekla" routerDirection="root">
+        <ion-label>Who Was Thekla?</ion-label>
+      </ion-item>
+      <ion-item button routerLink="/join-us" routerDirection="root">
+        <ion-label>Join Us</ion-label>
+      </ion-item>
+      <ion-item button routerLink="/rule-of-life" routerDirection="root">
+        <ion-label>Rule of Life</ion-label>
+      </ion-item>
+      <ion-item button routerLink="/devotions" routerDirection="root">
+        <ion-label>Devotions</ion-label>
+      </ion-item>
+      <ion-item button routerLink="/ministry-support" routerDirection="root">
+        <ion-label>Ministry & Support</ion-label>
+      </ion-item>
+      <ion-item button routerLink="/donate" routerDirection="root">
+        <ion-label>Donate</ion-label>
+      </ion-item>
+      <ion-item button routerLink="/contact" routerDirection="root">
+        <ion-label>Contact</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-content id="main-content" [fullscreen]="true">
+  
+  <!-- Page Header -->
+  <section class="page-header">
+    <h1 class="page-title">Member Dashboard</h1>
+    <p class="page-subtitle" *ngIf="user">Welcome, {{ user.email }}</p>
+  </section>
+
+  <!-- Email Verification Alert -->
+  <section class="verification-section" *ngIf="user && !user.emailVerified">
+    <div class="section-container">
+      <ion-card class="verification-card">
+        <ion-card-header>
+          <ion-card-title>
+            <ion-icon name="alert-circle"></ion-icon>
+            Email Verification Required
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <p>
+            Please verify your email address to access all forum features. We've sent a verification 
+            email to <strong>{{ user.email }}</strong>.
+          </p>
+          <p class="verification-tip">
+            <strong>Can't find the email?</strong> Please check your spam/junk folder. The email 
+            may take a few minutes to arrive.
+          </p>
+          <div class="verification-actions">
+            <ion-button 
+              (click)="resendVerificationEmail()" 
+              [disabled]="isResendingVerification"
+              fill="outline">
+              <ion-spinner *ngIf="isResendingVerification" name="crescent"></ion-spinner>
+              <ion-icon *ngIf="!isResendingVerification" name="refresh"></ion-icon>
+              <span *ngIf="!isResendingVerification">Resend Verification Email</span>
+            </ion-button>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </section>
+
+  <!-- Member Info Card -->
+  <section class="dashboard-section" *ngIf="user">
+    <div class="section-container">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Your Account</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <div class="member-info" *ngIf="!isLoading">
+            <div class="info-row">
+              <span class="info-label">Email:</span>
+              <span class="info-value">{{ user.email }}</span>
+              <ion-icon 
+                *ngIf="user.emailVerified" 
+                name="checkmark-circle" 
+                class="verified-icon">
+              </ion-icon>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Member Level:</span>
+              <span class="info-value">{{ getMemberLevelDisplay() }}</span>
+            </div>
+            <div class="info-row" *ngIf="memberData">
+              <span class="info-label">Member Since:</span>
+              <span class="info-value">
+                {{ memberData.createdAt?.toDate?.() | date:'mediumDate' || 'Recently' }}
+              </span>
+            </div>
+            <div class="info-row" *ngIf="memberData?.subscribeToNewsletter">
+              <span class="info-label">Newsletter:</span>
+              <span class="info-value">Subscribed</span>
+            </div>
+          </div>
+          <div class="loading-spinner" *ngIf="isLoading">
+            <ion-spinner name="crescent"></ion-spinner>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </section>
+
+  <!-- Forum Access Card -->
+  <section class="dashboard-section" *ngIf="user && user.emailVerified">
+    <div class="section-container">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Forum Access</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <p class="section-description">
+            Your email is verified! You now have full access to the communication forum.
+          </p>
+          <div class="forum-features">
+            <div class="feature-item">
+              <ion-icon name="chatbubbles"></ion-icon>
+              <div>
+                <h3>Discussion Forums</h3>
+                <p>Participate in community discussions</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <ion-icon name="documentText"></ion-icon>
+              <div>
+                <h3>Share Content</h3>
+                <p>Post prayers, devotionals, and reflections</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <ion-icon name="people"></ion-icon>
+              <div>
+                <h3>Connect</h3>
+                <p>Engage with other members</p>
+              </div>
+            </div>
+          </div>
+          <ion-button expand="block" routerLink="/forum" class="forum-button">
+            Go to Forum
+          </ion-button>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </section>
+
+  <!-- Placeholder for Future Features -->
+  <section class="dashboard-section" *ngIf="user && user.emailVerified">
+    <div class="section-container">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Coming Soon</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <p class="section-description">
+            Additional features are being developed, including:
+          </p>
+          <ul class="coming-soon-list">
+            <li>Member contributions and badges</li>
+            <li>Advanced forum features</li>
+            <li>Personal profile customization</li>
+            <li>Community events and calendar</li>
+          </ul>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </section>
+
+  <!-- Sign Out -->
+  <section class="dashboard-section">
+    <div class="section-container">
+      <ion-button 
+        expand="block" 
+        fill="outline" 
+        color="danger"
+        (click)="signOut()"
+        class="sign-out-button">
+        <ion-icon name="logOut"></ion-icon>
+        Sign Out
+      </ion-button>
+    </div>
+  </section>
+
+</ion-content>
+

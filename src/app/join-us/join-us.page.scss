@@ -1,0 +1,336 @@
+// Using Ionic theme variables for automatic dark/light mode support
+
+ion-content {
+  --background: var(--ion-background-color);
+  --color: var(--ion-text-color);
+}
+
+// Sticky Navigation (same as other pages)
+.main-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  ion-toolbar {
+    --background: var(--ion-background-color);
+    --color: var(--ion-text-color);
+    padding: 0.5rem 1rem;
+  }
+
+  .logo-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--ion-color-primary);
+    text-align: left;
+  }
+
+  .mobile-menu-btn {
+    display: block;
+    color: var(--ion-text-color);
+    
+    @media (min-width: 768px) {
+      display: none;
+    }
+  }
+
+  .desktop-nav {
+    display: none;
+    gap: 1.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+
+    @media (min-width: 768px) {
+      display: flex;
+    }
+
+    .nav-link {
+      color: var(--ion-text-color);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      padding: 0.5rem 0;
+      transition: color 0.3s ease;
+      position: relative;
+
+      &:hover {
+        color: var(--ion-color-primary);
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--ion-color-primary);
+        transition: width 0.3s ease;
+      }
+
+      &:hover::after {
+        width: 100%;
+      }
+    }
+  }
+}
+
+// Page Header
+.page-header {
+  padding: 2rem 1rem;
+  text-align: center;
+  background: linear-gradient(135deg, var(--ion-color-primary) 0%, var(--ion-color-primary-shade) 100%);
+  color: white;
+
+  .page-title {
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .page-subtitle {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin: 0;
+  }
+}
+
+// Tabs Section
+.tabs-section {
+  background: var(--ion-background-color);
+  border-bottom: 1px solid var(--ion-color-step-200);
+  padding: 0;
+  position: sticky;
+  top: 56px;
+  z-index: 999;
+
+  .tabs-container {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow-x: auto;
+
+    .tab-button {
+      flex: 1;
+      min-width: 150px;
+      padding: 1rem;
+      background: transparent;
+      border: none;
+      border-bottom: 3px solid transparent;
+      color: var(--ion-text-color);
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+
+      ion-icon {
+        font-size: 1.2rem;
+      }
+
+      &:hover {
+        background: var(--ion-color-step-50);
+        color: var(--ion-color-primary);
+      }
+
+      &.active {
+        color: var(--ion-color-primary);
+        border-bottom-color: var(--ion-color-primary);
+        background: var(--ion-color-step-50);
+      }
+    }
+  }
+}
+
+// Form Section
+.form-section {
+  padding: 2rem 1rem;
+  max-width: 600px;
+  margin: 0 auto;
+
+  ion-card {
+    margin: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+    ion-card-header {
+      padding-bottom: 0.5rem;
+
+      ion-card-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--ion-color-primary);
+      }
+    }
+
+    ion-card-content {
+      padding-top: 1rem;
+
+      .form-description {
+        margin-bottom: 1.5rem;
+        color: var(--ion-text-color);
+        line-height: 1.6;
+      }
+
+      .error-message {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 1rem;
+        background: var(--ion-color-danger-tint);
+        color: var(--ion-color-danger);
+        border-radius: 8px;
+        margin-bottom: 1rem;
+        font-size: 0.9rem;
+
+        ion-icon {
+          font-size: 1.2rem;
+        }
+      }
+
+      .success-message {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 1rem;
+        background: var(--ion-color-success-tint);
+        color: var(--ion-color-success);
+        border-radius: 8px;
+        margin-bottom: 1rem;
+        font-size: 0.9rem;
+
+        ion-icon {
+          font-size: 1.2rem;
+        }
+      }
+
+      form {
+        ion-item {
+          --padding-start: 0;
+          --inner-padding-end: 0;
+          margin-bottom: 1rem;
+
+          ion-label {
+            font-weight: 500;
+            color: var(--ion-text-color);
+          }
+
+          ion-input {
+            --padding-start: 0.75rem;
+            --padding-end: 0.75rem;
+            border: 1px solid var(--ion-color-step-200);
+            border-radius: 8px;
+            margin-top: 0.5rem;
+          }
+        }
+
+        .checkbox-label {
+          margin-left: 0.5rem;
+          white-space: normal;
+        }
+
+        .form-info {
+          background: var(--ion-color-step-50);
+          padding: 1rem;
+          border-radius: 8px;
+          margin: 1.5rem 0;
+          font-size: 0.9rem;
+          line-height: 1.6;
+
+          p {
+            margin: 0.5rem 0;
+
+            &:first-child {
+              margin-top: 0;
+            }
+
+            &:last-child {
+              margin-bottom: 0;
+            }
+          }
+        }
+
+        .form-actions {
+          display: flex;
+          justify-content: flex-end;
+          margin-bottom: 1rem;
+        }
+
+        .submit-button {
+          margin-top: 1.5rem;
+          --border-radius: 8px;
+          height: 48px;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}
+
+// Mobile Menu (same as other pages)
+ion-menu {
+  --width: 280px;
+  
+  ion-content {
+    --background: var(--ion-background-color);
+  }
+
+  ion-list {
+    padding: 1rem 0;
+    background: var(--ion-background-color);
+  }
+
+  ion-item {
+    --padding-start: 1.5rem;
+    --min-height: 3.5rem;
+    --background: var(--ion-background-color);
+    --color: var(--ion-text-color);
+    
+    ion-label {
+      font-size: 1rem;
+      color: var(--ion-text-color);
+    }
+
+    &:hover {
+      --background: var(--ion-color-step-50);
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .page-header {
+    padding: 1.5rem 1rem;
+
+    .page-title {
+      font-size: 1.75rem;
+    }
+
+    .page-subtitle {
+      font-size: 1rem;
+    }
+  }
+
+  .tabs-section {
+    .tabs-container {
+      .tab-button {
+        min-width: 120px;
+        font-size: 0.85rem;
+        padding: 0.75rem 0.5rem;
+
+        ion-icon {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+
+  .form-section {
+    padding: 1.5rem 1rem;
+  }
+}
+

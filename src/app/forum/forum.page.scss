@@ -1,0 +1,207 @@
+// Using Ionic theme variables for automatic dark/light mode support
+
+ion-content {
+  --background: var(--ion-background-color);
+  --color: var(--ion-text-color);
+}
+
+// Sticky Navigation (same as other pages)
+.main-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  ion-toolbar {
+    --background: var(--ion-background-color);
+    --color: var(--ion-text-color);
+    padding: 0.5rem 1rem;
+  }
+
+  .logo-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--ion-color-primary);
+    text-align: left;
+  }
+
+  .mobile-menu-btn {
+    display: block;
+    color: var(--ion-text-color);
+    
+    @media (min-width: 768px) {
+      display: none;
+    }
+  }
+
+  .desktop-nav {
+    display: none;
+    gap: 1.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+
+    @media (min-width: 768px) {
+      display: flex;
+    }
+
+    .nav-link {
+      color: var(--ion-text-color);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      padding: 0.5rem 0;
+      transition: color 0.3s ease;
+      position: relative;
+
+      &:hover {
+        color: var(--ion-color-primary);
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--ion-color-primary);
+        transition: width 0.3s ease;
+      }
+
+      &:hover::after {
+        width: 100%;
+      }
+    }
+  }
+}
+
+// Page Header
+.page-header {
+  padding: 2rem 1rem;
+  text-align: center;
+  background: linear-gradient(135deg, var(--ion-color-primary) 0%, var(--ion-color-primary-shade) 100%);
+  color: white;
+
+  .page-title {
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .page-subtitle {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin: 0;
+  }
+}
+
+// Content Section
+.content-section {
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  .section-container {
+    .section-content {
+      .section-title {
+        font-size: 1.75rem;
+        font-weight: 600;
+        color: var(--ion-color-primary);
+        margin-bottom: 1rem;
+      }
+
+      .section-text {
+        font-size: 1rem;
+        line-height: 1.8;
+        color: var(--ion-text-color);
+        margin-bottom: 1rem;
+      }
+
+      .forum-placeholder {
+        background: var(--ion-color-step-50);
+        padding: 2rem;
+        border-radius: 8px;
+        margin-top: 2rem;
+
+        p {
+          font-weight: 600;
+          margin-bottom: 1rem;
+          color: var(--ion-text-color);
+        }
+
+        .section-list {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+
+          li {
+            padding: 0.75rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--ion-text-color);
+            line-height: 1.6;
+
+            &::before {
+              content: '•';
+              position: absolute;
+              left: 0;
+              color: var(--ion-color-primary);
+              font-weight: bold;
+              font-size: 1.2rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Mobile Menu (same as other pages)
+ion-menu {
+  --width: 280px;
+  
+  ion-content {
+    --background: var(--ion-background-color);
+  }
+
+  ion-list {
+    padding: 1rem 0;
+    background: var(--ion-background-color);
+  }
+
+  ion-item {
+    --padding-start: 1.5rem;
+    --min-height: 3.5rem;
+    --background: var(--ion-background-color);
+    --color: var(--ion-text-color);
+    
+    ion-label {
+      font-size: 1rem;
+      color: var(--ion-text-color);
+    }
+
+    &:hover {
+      --background: var(--ion-color-step-50);
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .page-header {
+    padding: 1.5rem 1rem;
+
+    .page-title {
+      font-size: 1.75rem;
+    }
+
+    .page-subtitle {
+      font-size: 1rem;
+    }
+  }
+
+  .content-section {
+    padding: 1.5rem 1rem;
+  }
+}
+
