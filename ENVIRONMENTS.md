@@ -44,13 +44,44 @@ This document tracks the environment setup, versions, and configuration for the 
 
 ## Environment Files
 
-The following environment files are configured but not tracked in Git:
+### ⚠️ Security Notice
 
-- `/environments/environment.ts` - Development environment
-- `/environments/environment.prod.ts` - Production environment
-- `.env` - Local environment variables (if needed)
-- `.env.local` - Local development overrides
-- `.env.production` - Production environment variables
+**Real environment files are excluded from git for security.** Only template/example files are committed.
+
+### Protected Files (Never Committed)
+
+The following files are configured but **NOT tracked in Git**:
+
+- `src/environments/environment.ts` - Development environment
+- `src/environments/environment.prod.ts` - Production environment
+- `src/environments/environment.staging.ts` - Staging environment (if used)
+- `src/environments/environment.prod.staging.ts` - Staging production build (if used)
+
+### Template Files (Safe to Commit)
+
+- `src/environments/environment.example.ts` - Development template
+- `src/environments/environment.prod.example.ts` - Production template
+
+### Getting Firebase Credentials
+
+To obtain Firebase configuration credentials:
+- **Email:** admin@accessiblewebmedia.com
+- Include: Your name, role, and which environment you need
+
+### Setup Instructions
+
+1. Copy example file: `cp src/environments/environment.example.ts src/environments/environment.ts`
+2. Request credentials from admin@accessiblewebmedia.com
+3. Fill in Firebase configuration in your local file
+4. Never commit the real file
+
+See `src/environments/README.md` for detailed setup instructions.
+
+### Additional Environment Files
+
+- `.env` - Local environment variables (if needed, excluded from git)
+- `.env.local` - Local development overrides (excluded from git)
+- `.env.production` - Production environment variables (excluded from git)
 
 ## Build Configuration
 

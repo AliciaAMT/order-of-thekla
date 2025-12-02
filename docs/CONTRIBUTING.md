@@ -114,6 +114,16 @@ git checkout -b deps/package-name-update
 - **Security**: Follow security best practices
 - **Accessibility**: Ensure your code is accessible to all users
 
+### Security Requirements
+
+**⚠️ CRITICAL:** Never commit real environment files or Firebase credentials.
+
+- Real environment files (`environment.ts`, `environment.prod.ts`) are excluded from git
+- Only template/example files should be committed
+- To get Firebase credentials, contact: **admin@accessiblewebmedia.com**
+- Run security checks before committing: `./scripts/check-env-security.sh`
+- See `docs/SECURITY.md` for complete security guidelines
+
 ### Licensing Considerations
 
 - **Code Contributions**: All code contributions are licensed under MIT License
@@ -228,18 +238,33 @@ Closes #123
 
 ### Before Submitting
 
-1. **Ensure tests pass**:
+1. **Run security check**:
+   ```bash
+   # Unix/Mac/Linux
+   ./scripts/check-env-security.sh
+   
+   # Windows PowerShell
+   .\scripts\check-env-security.ps1
+   ```
+
+2. **Ensure tests pass**:
    ```bash
    npm test
    npm run lint
    npm run build
    ```
 
-2. **Update documentation** as needed
+3. **Verify no environment files are staged**:
+   ```bash
+   git status
+   # Real environment files should NOT appear
+   ```
 
-3. **Check for conflicts** with the main branch
+4. **Update documentation** as needed
 
-4. **Self-review** your changes
+5. **Check for conflicts** with the main branch
+
+6. **Self-review** your changes
 
 ### Creating the Pull Request
 

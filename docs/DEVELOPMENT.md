@@ -99,14 +99,21 @@ npm list --depth=0
 
 ### 3. Environment Configuration
 
-```bash
-# Copy environment files (if they exist)
-cp src/environments/environment.example.ts src/environments/environment.ts
-cp src/environments/environment.example.prod.ts src/environments/environment.prod.ts
+**⚠️ Security:** Real environment files are excluded from git. Only templates are committed.
 
-# Create local environment file
-touch .env.local
+```bash
+# Copy example files to create your local environment files
+cp src/environments/environment.example.ts src/environments/environment.ts
+cp src/environments/environment.prod.example.ts src/environments/environment.prod.ts
 ```
+
+**Getting Firebase Credentials:**
+- Contact: **admin@accessiblewebmedia.com**
+- Include: Your name, role, and which environment you need
+
+Once you have credentials, fill them in your local `environment.ts` file (never commit this file).
+
+See `src/environments/README.md` for detailed setup instructions.
 
 ### 4. Verify Setup
 
@@ -470,10 +477,17 @@ ng build --verbose
 
 ### Security
 
-1. **Sanitize user input**
-2. **Use HTTPS in production**
-3. **Implement proper authentication**
-4. **Validate all data**
+1. **Environment Files**: Never commit real environment files or Firebase credentials
+   - Real files are excluded from git automatically
+   - Get credentials from admin@accessiblewebmedia.com
+   - Run security checks: `./scripts/check-env-security.sh`
+   - See `docs/SECURITY.md` for guidelines
+
+2. **Sanitize user input**
+3. **Use HTTPS in production**
+4. **Implement proper authentication**
+5. **Validate all data**
+6. **Never commit secrets or API keys**
 
 ### Accessibility
 

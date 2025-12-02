@@ -20,15 +20,52 @@ The CLI automatically fixes common app issues:
 - **Touch Optimization**: Improves touch handling and iOS compatibility
 
 ## Environment Configuration
-The project includes multiple environment configurations:
-- **Development**: Uses `src/environments/environment.ts`
-- **Production**: Uses `src/environments/environment.prod.ts`
-- **Staging**: Uses `src/environments/environment.staging.ts`
-- **Staging (Production Build)**: Uses `src/environments/environment.prod.staging.ts`
+
+### ⚠️ Security Notice
+
+**Real environment files are excluded from git for security.** Only template files are committed.
+
+### Setting Up Environment Files
+
+1. **Copy the example files** to create your local environment files:
+   ```bash
+   cp src/environments/environment.example.ts src/environments/environment.ts
+   cp src/environments/environment.prod.example.ts src/environments/environment.prod.ts
+   ```
+
+2. **Get Firebase credentials** by contacting: **admin@accessiblewebmedia.com**
+
+3. **Fill in your Firebase configuration** in the local environment files
+
+4. **Never commit** these files - they are automatically excluded by `.gitignore`
+
+See `src/environments/README.md` for detailed setup instructions.
+
+### Available Environment Configurations
+
+- **Development**: Uses `src/environments/environment.ts` (not in git)
+- **Production**: Uses `src/environments/environment.prod.ts` (not in git)
+- **Staging**: Uses `src/environments/environment.staging.ts` (not in git, if used)
+- **Staging (Production Build)**: Uses `src/environments/environment.prod.staging.ts` (not in git, if used)
+
+### Template Files (Safe to Commit)
+
+- `src/environments/environment.example.ts` - Development template
+- `src/environments/environment.prod.example.ts` - Production template
 
 ## Firebase Setup
 
-Firebase is not configured. Run the initializer with `--firebase` flag to set it up.
+Firebase configuration is required for authentication and database features.
+
+**To get Firebase credentials:**
+- Contact: **admin@accessiblewebmedia.com**
+- Include your name, role, and which environment you need
+
+Once you have credentials, add them to your local `environment.ts` file (never commit this file).
+
+For more information, see:
+- `src/environments/README.md` - Environment setup guide
+- `docs/SECURITY.md` - Security guidelines
 
 
 ## Available Scripts
