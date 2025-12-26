@@ -14,9 +14,19 @@
   .logo-title {
     font-size: 1.25rem;
     font-weight: 600;
-    color: var(--ion-color-primary);
     margin: 0;
     text-align: left;
+
+    .logo-link {
+      color: var(--ion-color-primary);
+      text-decoration: none;
+      display: block;
+      transition: opacity 0.2s ease;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
   }
 
   .mobile-menu-btn {
