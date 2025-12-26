@@ -291,39 +291,6 @@ ion-content {
   }
 }
 
-// Mobile Menu (same as other pages)
-ion-menu {
-  --width: 280px;
-  
-  ion-content {
-    --background: var(--ion-background-color);
-    --overflow: auto;
-    --overscroll-behavior: contain;
-  }
-
-  ion-list {
-    padding: 1rem 0;
-    background: var(--ion-background-color);
-    min-height: 100%;
-  }
-
-  ion-item {
-    --padding-start: 1.5rem;
-    --min-height: 3.5rem;
-    --background: var(--ion-background-color);
-    --color: var(--ion-text-color);
-    
-    ion-label {
-      font-size: 1rem;
-      color: var(--ion-text-color);
-    }
-
-    &:hover {
-      --background: var(--ion-color-step-50);
-    }
-  }
-}
-
 // Responsive adjustments
 @media (max-width: 768px) {
   .page-header {

@@ -1,12 +1,6 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { 
-  IonHeader, 
-  IonToolbar, 
-  IonTitle, 
   IonContent,
-  IonButtons,
-  IonMenuButton,
-  IonMenu,
   IonIcon,
   IonList,
   IonItem,
@@ -19,41 +13,33 @@ import {
   IonCardTitle,
   IonCardContent,
   IonSpinner,
-  MenuController,
   ToastController
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { 
-  menu, 
-  close,
   mail,
   lockClosed,
   people,
   checkmarkCircle,
   alertCircle
 } from 'ionicons/icons';
-import { RouterLink, Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AuthService, SignupData, LoginData } from '../services/auth.service';
 import { FirestoreService } from '../services/firestore.service';
 import { onAuthStateChanged } from 'firebase/auth';
 import { FirebaseService } from '../services/firebase.service';
+import { MainHeaderComponent } from '../components/main-header/main-header.component';
 
 @Component({
   selector: 'app-join-us',
   templateUrl: 'join-us.page.html',
   styleUrls: ['join-us.page.scss'],
   imports: [
-    IonHeader, 
-    IonToolbar, 
-    IonTitle, 
+    MainHeaderComponent,
     IonContent,
-    IonButtons,
-    IonMenuButton,
-    IonMenu,
     IonIcon,
-    IonList,
     IonItem,
     IonLabel,
     IonInput,
@@ -65,11 +51,10 @@ import { FirebaseService } from '../services/firebase.service';
     IonCardContent,
     IonSpinner,
     FormsModule,
-    CommonModule,
-    RouterLink
+    CommonModule
   ],
 })
-export class JoinUsPage implements OnInit, AfterViewInit {
+export class JoinUsPage implements OnInit {
   // Forum signup form
   forumSignup = {
     email: '',
@@ -95,7 +80,6 @@ export class JoinUsPage implements OnInit, AfterViewInit {
   isAuthenticated = false;
 
   constructor(
-    private menuController: MenuController,
     private authService: AuthService,
     private firestoreService: FirestoreService,
     private router: Router,
@@ -104,8 +88,6 @@ export class JoinUsPage implements OnInit, AfterViewInit {
     private firebaseService: FirebaseService
   ) {
     addIcons({
-      menu,
-      close,
       mail,
       lockClosed,
       people,
@@ -124,14 +106,6 @@ export class JoinUsPage implements OnInit, AfterViewInit {
         this.router.navigate([returnUrl]);
       }
     });
-  }
-
-  ngAfterViewInit() {
-    // Ensure menu is enabled after view is initialized
-    // This prevents the offsetHeight error by ensuring the content element exists
-    setTimeout(() => {
-      this.menuController.enable(true, 'main-menu');
-    }, 0);
   }
 
   async onForumSignup() {

@@ -1,24 +1,15 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { 
-  IonHeader, 
-  IonToolbar, 
-  IonTitle, 
   IonContent,
-  IonButtons,
-  IonMenuButton,
-  IonMenu,
   IonIcon,
   IonButton,
   IonItem,
   IonLabel,
   IonInput,
-  IonList,
-  MenuController
+  IonList
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { 
-  menu, 
-  close, 
   heart, 
   people, 
   star, 
@@ -33,36 +24,29 @@ import {
 } from 'ionicons/icons';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { MainHeaderComponent } from '../components/main-header/main-header.component';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   imports: [
-    IonHeader, 
-    IonToolbar, 
-    IonTitle, 
+    MainHeaderComponent,
     IonContent,
-    IonButtons,
-    IonMenuButton,
-    IonMenu,
     IonIcon,
     IonButton,
     IonItem,
     IonLabel,
     IonInput,
-    IonList,
     FormsModule,
     RouterLink
   ],
 })
-export class HomePage implements AfterViewInit {
+export class HomePage {
   newsletterEmail: string = '';
 
-  constructor(private menuController: MenuController) {
+  constructor() {
     addIcons({
-      menu,
-      close,
       heart,
       people,
       star,
@@ -75,14 +59,6 @@ export class HomePage implements AfterViewInit {
       gift,
       flame
     });
-  }
-
-  ngAfterViewInit() {
-    // Ensure menu is enabled after view is initialized
-    // This prevents the offsetHeight error by ensuring the content element exists
-    setTimeout(() => {
-      this.menuController.enable(true, 'main-menu');
-    }, 0);
   }
 
   onNewsletterSubmit() {

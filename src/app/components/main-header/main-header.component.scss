@@ -1,0 +1,80 @@
+// Sticky Navigation
+.main-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  ion-toolbar {
+    --background: var(--ion-background-color);
+    --color: var(--ion-text-color);
+    padding: 0.5rem 1rem;
+  }
+
+  .logo-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--ion-color-primary);
+    margin: 0;
+    text-align: left;
+  }
+
+  .mobile-menu-btn {
+    display: block;
+    color: var(--ion-text-color);
+    
+    // Hide on larger screens where nav fits on one line
+    // Use a very large breakpoint to ensure all nav items fit without cutting off
+    @media (min-width: 1600px) {
+      display: none;
+    }
+  }
+
+  .desktop-nav {
+    display: none;
+    
+    // Show desktop nav only when screen is wide enough to fit all items on one line
+    // Use very large breakpoint to prevent any text from being cut off
+    @media (min-width: 1600px) {
+      display: flex;
+      gap: 1.25rem; // Reduced gap to make it more compact
+      align-items: center;
+      flex-wrap: nowrap; // Prevent wrapping - if it wraps, hamburger menu shows instead
+      white-space: nowrap;
+      max-width: 100%;
+      overflow: hidden; // Prevent any overflow
+    }
+
+    .nav-link {
+      color: var(--ion-text-color);
+      text-decoration: none;
+      font-size: 0.9rem; // Slightly smaller font to fit better
+      font-weight: 500;
+      padding: 0.5rem 0;
+      flex-shrink: 0; // Prevent links from shrinking
+      transition: color 0.3s ease;
+      position: relative;
+
+      &:hover {
+        color: var(--ion-color-primary);
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--ion-color-primary);
+        transition: width 0.3s ease;
+      }
+
+      &:hover::after {
+        width: 100%;
+      }
+    }
+  }
+}
+
+

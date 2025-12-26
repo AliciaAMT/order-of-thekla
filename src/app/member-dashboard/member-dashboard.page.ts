@@ -1,12 +1,6 @@
-import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { 
-  IonHeader, 
-  IonToolbar, 
-  IonTitle, 
   IonContent,
-  IonButtons,
-  IonMenuButton,
-  IonMenu,
   IonIcon,
   IonList,
   IonItem,
@@ -17,13 +11,10 @@ import {
   IonCardTitle,
   IonCardContent,
   IonSpinner,
-  MenuController,
   ToastController
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { 
-  menu, 
-  close,
   mail,
   checkmarkCircle,
   alertCircle,
@@ -35,29 +26,22 @@ import {
   heart
 } from 'ionicons/icons';
 import { RouterLink, Router } from '@angular/router';
-import { DatePipe, CommonModule } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { AuthService } from '../services/auth.service';
 import { FirestoreService, ForumMember } from '../services/firestore.service';
 import { onAuthStateChanged, User } from 'firebase/auth';
 import { FirebaseService } from '../services/firebase.service';
 import { Subscription } from 'rxjs';
+import { MainHeaderComponent } from '../components/main-header/main-header.component';
 
 @Component({
   selector: 'app-member-dashboard',
   templateUrl: 'member-dashboard.page.html',
   styleUrls: ['member-dashboard.page.scss'],
   imports: [
-    IonHeader, 
-    IonToolbar, 
-    IonTitle, 
+    MainHeaderComponent,
     IonContent,
-    IonButtons,
-    IonMenuButton,
-    IonMenu,
     IonIcon,
-    IonList,
-    IonItem,
-    IonLabel,
     IonButton,
     IonCard,
     IonCardHeader,
@@ -65,11 +49,10 @@ import { Subscription } from 'rxjs';
     IonCardContent,
     IonSpinner,
     RouterLink,
-    DatePipe,
     CommonModule
   ],
 })
-export class MemberDashboardPage implements OnInit, OnDestroy, AfterViewInit {
+export class MemberDashboardPage implements OnInit, OnDestroy {
   user: User | null = null;
   memberData: ForumMember | null = null;
   isLoading = false;
@@ -77,7 +60,6 @@ export class MemberDashboardPage implements OnInit, OnDestroy, AfterViewInit {
   private authStateSubscription?: Subscription;
 
   constructor(
-    private menuController: MenuController,
     private authService: AuthService,
     private firestoreService: FirestoreService,
     private router: Router,
@@ -85,8 +67,6 @@ export class MemberDashboardPage implements OnInit, OnDestroy, AfterViewInit {
     private firebaseService: FirebaseService
   ) {
     addIcons({
-      menu,
-      close,
       mail,
       checkmarkCircle,
       alertCircle,
@@ -115,14 +95,6 @@ export class MemberDashboardPage implements OnInit, OnDestroy, AfterViewInit {
         this.router.navigate(['/join-us']);
       }
     });
-  }
-
-  ngAfterViewInit() {
-    // Ensure menu is enabled after view is initialized
-    // This prevents the offsetHeight error by ensuring the content element exists
-    setTimeout(() => {
-      this.menuController.enable(true, 'main-menu');
-    }, 0);
   }
 
   ngOnDestroy() {
