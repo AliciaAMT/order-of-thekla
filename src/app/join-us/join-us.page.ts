@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { 
   IonHeader, 
   IonToolbar, 
@@ -18,7 +18,6 @@ import {
   IonCardHeader,
   IonCardTitle,
   IonCardContent,
-  IonAlert,
   IonSpinner,
   MenuController,
   ToastController
@@ -35,6 +34,7 @@ import {
 } from 'ionicons/icons';
 import { RouterLink, Router, ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { AuthService, SignupData, LoginData } from '../services/auth.service';
 import { FirestoreService } from '../services/firestore.service';
 import { onAuthStateChanged } from 'firebase/auth';
@@ -63,13 +63,13 @@ import { FirebaseService } from '../services/firebase.service';
     IonCardHeader,
     IonCardTitle,
     IonCardContent,
-    IonAlert,
     IonSpinner,
     FormsModule,
+    CommonModule,
     RouterLink
   ],
 })
-export class JoinUsPage implements OnInit {
+export class JoinUsPage implements OnInit, AfterViewInit {
   // Forum signup form
   forumSignup = {
     email: '',
@@ -124,6 +124,14 @@ export class JoinUsPage implements OnInit {
         this.router.navigate([returnUrl]);
       }
     });
+  }
+
+  ngAfterViewInit() {
+    // Ensure menu is enabled after view is initialized
+    // This prevents the offsetHeight error by ensuring the content element exists
+    setTimeout(() => {
+      this.menuController.enable(true, 'main-menu');
+    }, 0);
   }
 
   async onForumSignup() {
@@ -298,4 +306,9 @@ export class JoinUsPage implements OnInit {
     await toast.present();
   }
 }
+
+
+
+
+
 

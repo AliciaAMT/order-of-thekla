@@ -118,3 +118,8 @@ generateIcons(sourceImagePath).catch(error => {
   process.exit(1);
 });
 
+
+
+
+
+

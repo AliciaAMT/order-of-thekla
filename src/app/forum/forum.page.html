@@ -1,11 +1,8 @@
 <!-- Sticky Navigation -->
 <ion-header class="main-header">
   <ion-toolbar>
-    <ion-title class="logo-title">Order of Thekla</ion-title>
-    <ion-buttons slot="end">
-      <ion-menu-button class="mobile-menu-btn" menu="main-menu"></ion-menu-button>
-    </ion-buttons>
-    <nav class="desktop-nav">
+    <ion-title class="logo-title" slot="start">Order of Thekla</ion-title>
+    <nav class="desktop-nav" slot="end">
       <a routerLink="/home" class="nav-link">Home</a>
       <a routerLink="/about" class="nav-link">About</a>
       <a routerLink="/who-was-thekla" class="nav-link">Who Was Thekla?</a>
@@ -16,6 +13,9 @@
       <a routerLink="/donate" class="nav-link">Donate</a>
       <a routerLink="/contact" class="nav-link">Contact</a>
     </nav>
+    <ion-buttons slot="end">
+      <ion-menu-button class="mobile-menu-btn" menu="main-menu"></ion-menu-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -29,7 +29,7 @@
       </ion-buttons>
     </ion-toolbar>
   </ion-header>
-  <ion-content>
+  <ion-content [scrollY]="true">
     <ion-list>
       <ion-item button routerLink="/home" routerDirection="root">
         <ion-label>Home</ion-label>
@@ -97,4 +97,9 @@
   </section>
 
 </ion-content>
+
+
+
+
+
 

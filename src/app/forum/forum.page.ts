@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 import { 
   IonHeader, 
   IonToolbar, 
@@ -7,7 +7,6 @@ import {
   IonButtons,
   IonMenuButton,
   IonMenu,
-  IonIcon,
   IonList,
   IonItem,
   IonLabel,
@@ -32,19 +31,31 @@ import { RouterLink } from '@angular/router';
     IonButtons,
     IonMenuButton,
     IonMenu,
-    IonIcon,
     IonList,
     IonItem,
     IonLabel,
     RouterLink
   ],
 })
-export class ForumPage {
+export class ForumPage implements AfterViewInit {
   constructor(private menuController: MenuController) {
     addIcons({
       menu,
       close
     });
   }
+
+  ngAfterViewInit() {
+    // Ensure menu is enabled after view is initialized
+    // This prevents the offsetHeight error by ensuring the content element exists
+    setTimeout(() => {
+      this.menuController.enable(true, 'main-menu');
+    }, 0);
+  }
 }
+
+
+
+
+
 

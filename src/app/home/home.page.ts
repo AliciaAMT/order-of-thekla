@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 import { 
   IonHeader, 
   IonToolbar, 
@@ -56,7 +56,7 @@ import { RouterLink } from '@angular/router';
     RouterLink
   ],
 })
-export class HomePage {
+export class HomePage implements AfterViewInit {
   newsletterEmail: string = '';
 
   constructor(private menuController: MenuController) {
@@ -75,6 +75,14 @@ export class HomePage {
       gift,
       flame
     });
+  }
+
+  ngAfterViewInit() {
+    // Ensure menu is enabled after view is initialized
+    // This prevents the offsetHeight error by ensuring the content element exists
+    setTimeout(() => {
+      this.menuController.enable(true, 'main-menu');
+    }, 0);
   }
 
   onNewsletterSubmit() {

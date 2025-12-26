@@ -70,3 +70,8 @@ If you prefer to generate icons manually or use an online tool:
 
 Place the generated icons in the appropriate directories as listed above.
 
+
+
+
+
+

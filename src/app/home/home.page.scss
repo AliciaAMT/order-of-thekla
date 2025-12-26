@@ -23,6 +23,7 @@ ion-content {
     font-size: 1.25rem;
     font-weight: 600;
     color: var(--ion-color-primary);
+    margin: 0;
     text-align: left;
   }
 
@@ -30,29 +31,37 @@ ion-content {
     display: block;
     color: var(--ion-text-color);
     
-    @media (min-width: 768px) {
+    // Hide on larger screens where nav fits on one line
+    // Use a very large breakpoint to ensure all nav items fit without cutting off
+    @media (min-width: 1600px) {
       display: none;
     }
   }
 
   .desktop-nav {
     display: none;
-    gap: 1.5rem;
-    align-items: center;
-    flex-wrap: wrap;
-
-    @media (min-width: 768px) {
+    
+    // Show desktop nav only when screen is wide enough to fit all items on one line
+    // Use very large breakpoint to prevent any text from being cut off
+    @media (min-width: 1600px) {
       display: flex;
+      gap: 1.25rem; // Reduced gap to make it more compact
+      align-items: center;
+      flex-wrap: nowrap; // Prevent wrapping - if it wraps, hamburger menu shows instead
+      white-space: nowrap;
+      max-width: 100%;
+      overflow: hidden; // Prevent any overflow
     }
 
     .nav-link {
       color: var(--ion-text-color);
       text-decoration: none;
-      font-size: 0.95rem;
+      font-size: 0.9rem; // Slightly smaller font to fit better
       font-weight: 500;
       padding: 0.5rem 0;
       transition: color 0.3s ease;
       position: relative;
+      flex-shrink: 0; // Prevent links from shrinking
 
       &:hover {
         color: var(--ion-color-primary);
@@ -82,11 +91,14 @@ ion-menu {
   
   ion-content {
     --background: var(--ion-background-color);
+    --overflow: auto;
+    --overscroll-behavior: contain;
   }
 
   ion-list {
     padding: 1rem 0;
     background: var(--ion-background-color);
+    min-height: 100%;
   }
 
   ion-item {
@@ -561,11 +573,17 @@ ion-menu {
     gap: 2rem;
     margin-top: 3rem;
 
-    @media (min-width: 768px) {
+    // Keep single column on mobile (as-is - don't mess with mobile view)
+    
+    // For tablet and medium screens: 2 columns (2x2 layout) 
+    // This ensures cards wrap into 2 rows and never get cut off
+    @media (min-width: 768px) and (max-width: 1399px) {
       grid-template-columns: repeat(2, 1fr);
     }
 
-    @media (min-width: 1024px) {
+    // For large widescreen displays: 4 columns in one row
+    // Only use this when there's definitely enough space (1400px+)
+    @media (min-width: 1400px) {
       grid-template-columns: repeat(4, 1fr);
     }
 

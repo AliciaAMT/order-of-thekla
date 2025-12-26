@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { 
   IonHeader, 
   IonToolbar, 
@@ -16,7 +16,6 @@ import {
   IonCardHeader,
   IonCardTitle,
   IonCardContent,
-  IonAlert,
   IonSpinner,
   MenuController,
   ToastController
@@ -36,7 +35,7 @@ import {
   heart
 } from 'ionicons/icons';
 import { RouterLink, Router } from '@angular/router';
-import { DatePipe } from '@angular/common';
+import { DatePipe, CommonModule } from '@angular/common';
 import { AuthService } from '../services/auth.service';
 import { FirestoreService, ForumMember } from '../services/firestore.service';
 import { onAuthStateChanged, User } from 'firebase/auth';
@@ -64,13 +63,13 @@ import { Subscription } from 'rxjs';
     IonCardHeader,
     IonCardTitle,
     IonCardContent,
-    IonAlert,
     IonSpinner,
     RouterLink,
-    DatePipe
+    DatePipe,
+    CommonModule
   ],
 })
-export class MemberDashboardPage implements OnInit, OnDestroy {
+export class MemberDashboardPage implements OnInit, OnDestroy, AfterViewInit {
   user: User | null = null;
   memberData: ForumMember | null = null;
   isLoading = false;
@@ -116,6 +115,14 @@ export class MemberDashboardPage implements OnInit, OnDestroy {
         this.router.navigate(['/join-us']);
       }
     });
+  }
+
+  ngAfterViewInit() {
+    // Ensure menu is enabled after view is initialized
+    // This prevents the offsetHeight error by ensuring the content element exists
+    setTimeout(() => {
+      this.menuController.enable(true, 'main-menu');
+    }, 0);
   }
 
   ngOnDestroy() {
@@ -172,6 +179,13 @@ export class MemberDashboardPage implements OnInit, OnDestroy {
       default:
         return 'Member';
     }
+  }
+
+  getMemberSinceDate(): string {
+    if (!this.memberData?.createdAt) return 'Recently';
+    const date = this.memberData.createdAt.toDate?.();
+    if (!date) return 'Recently';
+    return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
   }
 
   private async showToast(message: string, color: 'success' | 'danger' | 'warning' = 'success') {

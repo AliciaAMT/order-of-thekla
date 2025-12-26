@@ -1,11 +1,8 @@
 <!-- Sticky Navigation -->
 <ion-header class="main-header">
   <ion-toolbar>
-    <ion-title class="logo-title">Order of Thekla</ion-title>
-    <ion-buttons slot="end">
-      <ion-menu-button class="mobile-menu-btn" menu="main-menu"></ion-menu-button>
-    </ion-buttons>
-    <nav class="desktop-nav">
+    <ion-title class="logo-title" slot="start">Order of Thekla</ion-title>
+    <nav class="desktop-nav" slot="end">
       <a routerLink="/home" class="nav-link">Home</a>
       <a routerLink="/about" class="nav-link">About</a>
       <a routerLink="/who-was-thekla" class="nav-link">Who Was Thekla?</a>
@@ -16,6 +13,9 @@
       <a routerLink="/donate" class="nav-link">Donate</a>
       <a routerLink="/contact" class="nav-link">Contact</a>
     </nav>
+    <ion-buttons slot="end">
+      <ion-menu-button class="mobile-menu-btn" menu="main-menu"></ion-menu-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -29,7 +29,7 @@
       </ion-buttons>
     </ion-toolbar>
   </ion-header>
-  <ion-content>
+  <ion-content [scrollY]="true">
     <ion-list>
       <ion-item button routerLink="/home" routerDirection="root">
         <ion-label>Home</ion-label>
@@ -63,7 +63,7 @@
 </ion-menu>
 
 <ion-content id="main-content" [fullscreen]="true">
-  
+
   <!-- Page Header -->
   <section class="page-header">
     <h1 class="page-title">Join Us</h1>
@@ -73,22 +73,22 @@
   <!-- Tab Navigation -->
   <section class="tabs-section">
     <div class="tabs-container">
-      <button 
-        class="tab-button" 
+      <button
+        class="tab-button"
         [class.active]="activeTab === 'forum'"
         (click)="setActiveTab('forum')">
         <ion-icon name="people"></ion-icon>
         Forum Membership
       </button>
-      <button 
-        class="tab-button" 
+      <button
+        class="tab-button"
         [class.active]="activeTab === 'newsletter'"
         (click)="setActiveTab('newsletter')">
         <ion-icon name="mail"></ion-icon>
         Newsletter Only
       </button>
-      <button 
-        class="tab-button" 
+      <button
+        class="tab-button"
         [class.active]="activeTab === 'login'"
         (click)="setActiveTab('login')">
         <ion-icon name="lock-closed"></ion-icon>
@@ -106,7 +106,7 @@
         </ion-card-header>
         <ion-card-content>
           <p class="form-description">
-            Create an account to access our members-only communication forum where you can share posts, 
+            Create an account to access our members-only communication forum where you can share posts,
             prayers, devotionals, and connect with other members of the Order of Thekla community.
           </p>
 
@@ -124,9 +124,9 @@
 
           <form (ngSubmit)="onForumSignup()" #forumForm="ngForm">
             <!-- Honeypot field (hidden from users) -->
-            <input 
-              type="text" 
-              name="website" 
+            <input
+              type="text"
+              name="website"
               [(ngModel)]="forumSignup.honeypot"
               style="position: absolute; left: -9999px; opacity: 0;"
               tabindex="-1"
@@ -134,8 +134,8 @@
 
             <ion-item>
               <ion-label position="stacked">Email Address *</ion-label>
-              <ion-input 
-                type="email" 
+              <ion-input
+                type="email"
                 [(ngModel)]="forumSignup.email"
                 name="email"
                 required
@@ -146,8 +146,8 @@
 
             <ion-item>
               <ion-label position="stacked">Password *</ion-label>
-              <ion-input 
-                type="password" 
+              <ion-input
+                type="password"
                 [(ngModel)]="forumSignup.password"
                 name="password"
                 required
@@ -158,8 +158,8 @@
 
             <ion-item>
               <ion-label position="stacked">Confirm Password *</ion-label>
-              <ion-input 
-                type="password" 
+              <ion-input
+                type="password"
                 [(ngModel)]="forumSignup.confirmPassword"
                 name="confirmPassword"
                 required
@@ -177,7 +177,7 @@
 
             <div class="form-info">
               <p>
-                <strong>Email Verification Required:</strong> After signing up, you'll receive a verification email. 
+                <strong>Email Verification Required:</strong> After signing up, you'll receive a verification email.
                 Please check your inbox (and spam folder) and click the verification link to activate your account.
               </p>
               <p>
@@ -185,9 +185,9 @@
               </p>
             </div>
 
-            <ion-button 
-              type="submit" 
-              expand="block" 
+            <ion-button
+              type="submit"
+              expand="block"
               [disabled]="isLoading || !forumForm.valid"
               class="submit-button">
               <ion-spinner *ngIf="isLoading" name="crescent"></ion-spinner>
@@ -208,7 +208,7 @@
         </ion-card-header>
         <ion-card-content>
           <p class="form-description">
-            Stay connected with the Order of Thekla through our email newsletter. Receive updates, 
+            Stay connected with the Order of Thekla through our email newsletter. Receive updates,
             devotionals, and community news directly in your inbox.
           </p>
 
@@ -227,8 +227,8 @@
           <form (ngSubmit)="onNewsletterSignup()" #newsletterForm="ngForm">
             <ion-item>
               <ion-label position="stacked">Email Address *</ion-label>
-              <ion-input 
-                type="email" 
+              <ion-input
+                type="email"
                 [(ngModel)]="newsletterEmail"
                 name="newsletterEmail"
                 required
@@ -243,9 +243,9 @@
               </p>
             </div>
 
-            <ion-button 
-              type="submit" 
-              expand="block" 
+            <ion-button
+              type="submit"
+              expand="block"
               [disabled]="isLoading || !newsletterForm.valid"
               class="submit-button">
               <ion-spinner *ngIf="isLoading" name="crescent"></ion-spinner>
@@ -284,8 +284,8 @@
           <form (ngSubmit)="onLogin()" #loginForm="ngForm">
             <ion-item>
               <ion-label position="stacked">Email Address *</ion-label>
-              <ion-input 
-                type="email" 
+              <ion-input
+                type="email"
                 [(ngModel)]="login.email"
                 name="loginEmail"
                 required
@@ -296,8 +296,8 @@
 
             <ion-item>
               <ion-label position="stacked">Password *</ion-label>
-              <ion-input 
-                type="password" 
+              <ion-input
+                type="password"
                 [(ngModel)]="login.password"
                 name="loginPassword"
                 required
@@ -307,17 +307,17 @@
             </ion-item>
 
             <div class="form-actions">
-              <ion-button 
-                fill="clear" 
+              <ion-button
+                fill="clear"
                 (click)="onForgotPassword()"
                 [disabled]="isLoading">
                 Forgot Password?
               </ion-button>
             </div>
 
-            <ion-button 
-              type="submit" 
-              expand="block" 
+            <ion-button
+              type="submit"
+              expand="block"
               [disabled]="isLoading || !loginForm.valid"
               class="submit-button">
               <ion-spinner *ngIf="isLoading" name="crescent"></ion-spinner>
@@ -330,4 +330,9 @@
   </section>
 
 </ion-content>
+
+
+
+
+
 

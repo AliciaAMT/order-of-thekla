@@ -1,11 +1,8 @@
 <!-- Sticky Navigation -->
 <ion-header class="main-header">
   <ion-toolbar>
-    <ion-title class="logo-title">Order of Thekla</ion-title>
-    <ion-buttons slot="end">
-      <ion-menu-button class="mobile-menu-btn" menu="main-menu"></ion-menu-button>
-    </ion-buttons>
-    <nav class="desktop-nav">
+    <ion-title class="logo-title" slot="start">Order of Thekla</ion-title>
+    <nav class="desktop-nav" slot="end">
       <a routerLink="/home" class="nav-link">Home</a>
       <a routerLink="/about" class="nav-link">About</a>
       <a routerLink="/who-was-thekla" class="nav-link">Who Was Thekla?</a>
@@ -16,6 +13,9 @@
       <a routerLink="/donate" class="nav-link">Donate</a>
       <a routerLink="/contact" class="nav-link">Contact</a>
     </nav>
+    <ion-buttons slot="end">
+      <ion-menu-button class="mobile-menu-btn" menu="main-menu"></ion-menu-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -29,7 +29,7 @@
       </ion-buttons>
     </ion-toolbar>
   </ion-header>
-  <ion-content>
+  <ion-content [scrollY]="true">
     <ion-list>
       <ion-item button routerLink="/home" routerDirection="root">
         <ion-label>Home</ion-label>
@@ -63,11 +63,11 @@
 </ion-menu>
 
 <ion-content id="main-content" [fullscreen]="true">
-  
+
   <!-- Page Header -->
   <section class="page-header">
     <h1 class="page-title">Member Dashboard</h1>
-    <p class="page-subtitle" *ngIf="user">Welcome, {{ user.email }}</p>
+    <p class="page-subtitle" *ngIf="user">Welcome, {{ user?.email }}</p>
   </section>
 
   <!-- Email Verification Alert -->
@@ -82,16 +82,16 @@
         </ion-card-header>
         <ion-card-content>
           <p>
-            Please verify your email address to access all forum features. We've sent a verification 
-            email to <strong>{{ user.email }}</strong>.
+            Please verify your email address to access all forum features. We've sent a verification
+            email to <strong>{{ user?.email }}</strong>.
           </p>
           <p class="verification-tip">
-            <strong>Can't find the email?</strong> Please check your spam/junk folder. The email 
+            <strong>Can't find the email?</strong> Please check your spam/junk folder. The email
             may take a few minutes to arrive.
           </p>
           <div class="verification-actions">
-            <ion-button 
-              (click)="resendVerificationEmail()" 
+            <ion-button
+              (click)="resendVerificationEmail()"
               [disabled]="isResendingVerification"
               fill="outline">
               <ion-spinner *ngIf="isResendingVerification" name="crescent"></ion-spinner>
@@ -115,10 +115,10 @@
           <div class="member-info" *ngIf="!isLoading">
             <div class="info-row">
               <span class="info-label">Email:</span>
-              <span class="info-value">{{ user.email }}</span>
-              <ion-icon 
-                *ngIf="user.emailVerified" 
-                name="checkmark-circle" 
+              <span class="info-value">{{ user?.email }}</span>
+              <ion-icon
+                *ngIf="user.emailVerified"
+                name="checkmark-circle"
                 class="verified-icon">
               </ion-icon>
             </div>
@@ -129,7 +129,7 @@
             <div class="info-row" *ngIf="memberData">
               <span class="info-label">Member Since:</span>
               <span class="info-value">
-                {{ memberData.createdAt?.toDate?.() | date:'mediumDate' || 'Recently' }}
+                {{ getMemberSinceDate() }}
               </span>
             </div>
             <div class="info-row" *ngIf="memberData?.subscribeToNewsletter">
@@ -212,9 +212,9 @@
   <!-- Sign Out -->
   <section class="dashboard-section">
     <div class="section-container">
-      <ion-button 
-        expand="block" 
-        fill="outline" 
+      <ion-button
+        expand="block"
+        fill="outline"
         color="danger"
         (click)="signOut()"
         class="sign-out-button">
@@ -225,4 +225,9 @@
   </section>
 
 </ion-content>
+
+
+
+
+
 
