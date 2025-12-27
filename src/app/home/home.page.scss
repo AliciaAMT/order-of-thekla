@@ -1,10 +1,5 @@
-// Using Ionic theme variables for automatic dark/light mode support
-
-// Ensure content uses theme background
-ion-content {
-  --background: var(--ion-background-color);
-  --color: var(--ion-text-color);
-}
+// Page-specific styles for Home page
+// Common styles (ion-content, accessibility, smooth scrolling, etc.) are in global.scss
 
 // Hero Section
 .hero-section {
@@ -722,56 +717,7 @@ ion-content {
   }
 }
 
-// Footer
-.main-footer {
-  background: var(--ion-color-step-900);
-  color: var(--ion-color-step-50);
-  padding: 3rem 1rem 2rem;
-
-  @media (min-width: 768px) {
-    padding: 4rem 2rem 2rem;
-  }
-
-  .footer-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    text-align: center;
-  }
-
-  .footer-title {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    color: var(--ion-color-step-50);
-  }
-
-  .footer-copyright {
-    font-size: 0.9rem;
-    opacity: 0.8;
-    margin-bottom: 2rem;
-    color: var(--ion-color-step-200);
-  }
-
-  .footer-nav {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1.5rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--ion-color-step-700);
-
-    .footer-link {
-      color: var(--ion-color-step-200);
-      text-decoration: none;
-      font-size: 0.95rem;
-      transition: color 0.3s ease;
-
-      &:hover {
-        color: var(--ion-color-step-50);
-      }
-    }
-  }
-}
+// Footer styles are in global.scss
 
 // Responsive adjustments
 @media (max-width: 767px) {
@@ -804,15 +750,4 @@ ion-content {
   }
 }
 
-// Accessibility improvements
-a:focus,
-button:focus,
-ion-button:focus {
-  outline: 3px solid var(--ion-color-primary);
-  outline-offset: 2px;
-}
-
-// Smooth scrolling
-html {
-  scroll-behavior: smooth;
-}
+// Accessibility improvements and smooth scrolling are in global.scss
