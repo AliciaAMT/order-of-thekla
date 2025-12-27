@@ -5,7 +5,7 @@
   <!-- Page Header -->
   <section class="page-header">
     <h1 class="page-title">Member Dashboard</h1>
-    <p class="page-subtitle" *ngIf="user">Welcome, {{ user?.email }}</p>
+    <p class="page-subtitle" *ngIf="user">Welcome, {{ user.email }}</p>
   </section>
 
   <!-- Email Verification Alert -->
@@ -21,7 +21,7 @@
         <ion-card-content>
           <p>
             Please verify your email address to access all forum features. We've sent a verification
-            email to <strong>{{ user?.email }}</strong>.
+            email to <strong>{{ user.email }}</strong>.
           </p>
           <p class="verification-tip">
             <strong>Can't find the email?</strong> Please check your spam/junk folder. The email
@@ -53,7 +53,7 @@
           <div class="member-info" *ngIf="!isLoading">
             <div class="info-row">
               <span class="info-label">Email:</span>
-              <span class="info-value">{{ user?.email }}</span>
+              <span class="info-value">{{ user.email }}</span>
               <ion-icon
                 *ngIf="user.emailVerified"
                 name="checkmark-circle"
