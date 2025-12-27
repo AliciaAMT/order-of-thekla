@@ -1,8 +1,8 @@
 import { Component, AfterViewInit, OnInit } from '@angular/core';
-import { 
-  IonHeader, 
-  IonToolbar, 
-  IonTitle, 
+import {
+  IonHeader,
+  IonToolbar,
+  IonTitle,
   IonButtons,
   IonMenuButton,
   MenuController

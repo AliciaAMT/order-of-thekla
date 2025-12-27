@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { 
+import {
   IonContent,
   IonIcon,
   IonList,
@@ -16,7 +16,7 @@ import {
   ToastController
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { 
+import {
   mail,
   lockClosed,
   people,
@@ -152,7 +152,7 @@ export class JoinUsPage implements OnInit {
       if (result.success) {
         this.successMessage = result.message;
         await this.showToast(result.message, 'success');
-        
+
         // Clear form
         this.forumSignup = {
           email: '',
@@ -226,7 +226,7 @@ export class JoinUsPage implements OnInit {
       if (result.success && result.user) {
         this.successMessage = result.message;
         await this.showToast(result.message, 'success');
-        
+
         // Redirect to dashboard or return URL
         const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/member-dashboard';
         this.router.navigate([returnUrl]);

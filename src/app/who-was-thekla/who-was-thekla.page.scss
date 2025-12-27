@@ -55,7 +55,7 @@
 
     &.numbered {
       counter-reset: list-counter;
-      
+
       li {
         counter-increment: list-counter;
         padding-left: 2.5rem;

@@ -1,6 +1,6 @@
 import { Component, AfterViewInit, OnDestroy, OnInit } from '@angular/core';
-import { 
-  IonApp, 
+import {
+  IonApp,
   IonRouterOutlet,
   IonMenu,
   IonHeader,
@@ -21,7 +21,7 @@ import { filter, Subscription } from 'rxjs';
   selector: 'app-root',
   templateUrl: 'app.component.html',
   imports: [
-    IonApp, 
+    IonApp,
     IonRouterOutlet,
     IonMenu,
     IonHeader,

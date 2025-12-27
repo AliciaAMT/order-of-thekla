@@ -1,7 +1,7 @@
 // Mobile Menu Styles (moved from main-header component)
 ion-menu {
   --width: 280px;
-  
+
   ion-content {
     --background: var(--ion-background-color);
     --overflow: auto;
@@ -19,7 +19,7 @@ ion-menu {
     --min-height: 3.5rem;
     --background: var(--ion-background-color);
     --color: var(--ion-text-color);
-    
+
     ion-label {
       font-size: 1rem;
       color: var(--ion-text-color);

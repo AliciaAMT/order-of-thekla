@@ -457,8 +457,8 @@
     margin-top: 3rem;
 
     // Keep single column on mobile (as-is - don't mess with mobile view)
-    
-    // For tablet and medium screens: 2 columns (2x2 layout) 
+
+    // For tablet and medium screens: 2 columns (2x2 layout)
     // This ensures cards wrap into 2 rows and never get cut off
     @media (min-width: 768px) and (max-width: 1399px) {
       grid-template-columns: repeat(2, 1fr);
@@ -588,12 +588,12 @@
 
 .section-accountability {
   background: var(--ion-color-step-50);
-  
+
   .section-container {
     max-width: 800px;
     margin: 0 auto;
   }
-  
+
   .section-content {
     text-align: center;
   }

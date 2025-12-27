@@ -29,7 +29,7 @@ ion-content {
   .mobile-menu-btn {
     display: block;
     color: var(--ion-text-color);
-    
+
     // Hide on larger screens where nav fits on one line
     // Use a very large breakpoint to ensure all nav items fit without cutting off
     @media (min-width: 1600px) {
@@ -39,7 +39,7 @@ ion-content {
 
   .desktop-nav {
     display: none;
-    
+
     // Show desktop nav only when screen is wide enough to fit all items on one line
     // Use very large breakpoint to prevent any text from being cut off
     @media (min-width: 1600px) {

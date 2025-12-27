@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { 
+import {
   IonContent
 } from '@ionic/angular/standalone';
 import { RouterLink } from '@angular/router';
