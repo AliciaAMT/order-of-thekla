@@ -20,6 +20,26 @@ export const routes: Routes = [
     loadComponent: () => import('./join-us/join-us.page').then((m) => m.JoinUsPage),
   },
   {
+    path: 'rule-of-life',
+    loadComponent: () => import('./rule-of-life/rule-of-life.page').then((m) => m.RuleOfLifePage),
+  },
+  {
+    path: 'devotions',
+    loadComponent: () => import('./devotions/devotions.page').then((m) => m.DevotionsPage),
+  },
+  {
+    path: 'ministry-support',
+    loadComponent: () => import('./ministry-support/ministry-support.page').then((m) => m.MinistrySupportPage),
+  },
+  {
+    path: 'donate',
+    loadComponent: () => import('./donate/donate.page').then((m) => m.DonatePage),
+  },
+  {
+    path: 'contact',
+    loadComponent: () => import('./contact/contact.page').then((m) => m.ContactPage),
+  },
+  {
     path: 'member-dashboard',
     loadComponent: () => import('./member-dashboard/member-dashboard.page').then((m) => m.MemberDashboardPage),
     canActivate: [authGuard],
